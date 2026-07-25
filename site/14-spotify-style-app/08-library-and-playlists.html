@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Library and Playlists · Developing Flutter Applications</title>
+  <meta name="description" content="Generated documentation site">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/vendor/atom-one-dark.min.css">
+</head>
+<body>
+  <div class="site">
+    <header class="topbar">
+      <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+      <a href="../index.html" class="brand">Developing Flutter Applications</a>
+      <div class="search-wrap">
+        <input type="search" id="search" placeholder="Search docs…" autocomplete="off">
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar" id="sidebar">
+        <nav class="nav" aria-label="Documentation">
+          <ul class="nav-list">
+            
+                        <li class="nav-item depth-0">
+                          
+                            <a href="../index.html" class="nav-link">Developing Flutter Applications</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <a href="../README.html" class="nav-link">README</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">01 overview</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../01-overview/01-what-is-flutter.html" class="nav-link">What Is Flutter?</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../01-overview/02-dart-language-overview.html" class="nav-link">Dart Language Overview</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../01-overview/03-flutter-ecosystem.html" class="nav-link">The Flutter Ecosystem</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../01-overview/04-development-environment.html" class="nav-link">Setting Up Your Environment</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">02 dart basics</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../02-dart-basics/01-variables-and-types.html" class="nav-link">Variables and Types</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../02-dart-basics/02-control-flow.html" class="nav-link">Control Flow</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../02-dart-basics/03-functions.html" class="nav-link">Functions</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../02-dart-basics/04-collections.html" class="nav-link">Collections</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../02-dart-basics/05-classes-and-objects.html" class="nav-link">Classes and Objects</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">03 dart advanced</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../03-dart-advanced/01-generics.html" class="nav-link">Generics</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../03-dart-advanced/02-null-safety-deep-dive.html" class="nav-link">Null Safety Deep Dive</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../03-dart-advanced/03-mixins-and-extensions.html" class="nav-link">Mixins and Extensions</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../03-dart-advanced/04-exceptions-and-errors.html" class="nav-link">Exceptions and Errors</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../03-dart-advanced/05-libraries-and-exports.html" class="nav-link">Libraries and Exports</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">04 dart concurrency</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../04-dart-concurrency/01-event-loop.html" class="nav-link">The Dart Event Loop</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../04-dart-concurrency/02-async-await-futures.html" class="nav-link">async, await, and Futures</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../04-dart-concurrency/03-streams.html" class="nav-link">Streams</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../04-dart-concurrency/04-isolates.html" class="nav-link">Isolates</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">05 flutter app lifecycle</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../05-flutter-app-lifecycle/01-flutter-architecture.html" class="nav-link">Flutter Architecture</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../05-flutter-app-lifecycle/02-widget-tree-element-render.html" class="nav-link">Widget, Element, and Render Trees</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../05-flutter-app-lifecycle/03-app-lifecycle.html" class="nav-link">Application Lifecycle</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../05-flutter-app-lifecycle/04-navigation-overview.html" class="nav-link">Navigation Overview</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">06 flutter ui framework</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../06-flutter-ui-framework/01-rendering-pipeline.html" class="nav-link">Rendering Pipeline</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../06-flutter-ui-framework/02-material-cupertino.html" class="nav-link">Material and Cupertino</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../06-flutter-ui-framework/03-theming.html" class="nav-link">Theming</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../06-flutter-ui-framework/04-mediaquery-and-text-scale.html" class="nav-link">MediaQuery and Accessibility</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">07 layout basics</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../07-layout-basics/01-row-column-flex.html" class="nav-link">Row, Column, and Flex</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../07-layout-basics/02-container-padding-margin.html" class="nav-link">Container, Padding, and Margin</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../07-layout-basics/03-stack-positioned.html" class="nav-link">Stack and Positioned</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../07-layout-basics/04-align-centered-constraints.html" class="nav-link">Align, Center, and Constraints</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">08 layout advanced</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../08-layout-advanced/01-expanded-flexible.html" class="nav-link">Expanded and Flexible</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../08-layout-advanced/02-wrap-flow.html" class="nav-link">Wrap and Flow Layout</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../08-layout-advanced/03-layoutbuilder.html" class="nav-link">LayoutBuilder</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../08-layout-advanced/04-intrinsic-sliver.html" class="nav-link">Intrinsic Dimensions and Slivers</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">09 ui controls basics</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../09-ui-controls-basics/01-text-and-images.html" class="nav-link">Text and Images</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../09-ui-controls-basics/02-buttons.html" class="nav-link">Buttons</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../09-ui-controls-basics/03-text-fields.html" class="nav-link">Text Fields</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../09-ui-controls-basics/04-lists-and-grids.html" class="nav-link">Lists and Grids</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">10 ui controls advanced</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../10-ui-controls-advanced/01-scrollables-and-physics.html" class="nav-link">Scrollables and Physics</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../10-ui-controls-advanced/02-dialogs-bottom-sheets.html" class="nav-link">Dialogs and Bottom Sheets</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../10-ui-controls-advanced/03-gestures.html" class="nav-link">Gestures</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../10-ui-controls-advanced/04-navigation-rail-tabs.html" class="nav-link">Tabs and NavigationRail</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">11 state management</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../11-state-management/01-local-state-setstate.html" class="nav-link">Local State with setState</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../11-state-management/02-inherited-notifier.html" class="nav-link">InheritedWidget and Notifiers</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../11-state-management/03-provider-pattern.html" class="nav-link">Provider Pattern</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../11-state-management/04-riverpod-and-bloc.html" class="nav-link">Riverpod and BLoC Overview</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">12 custom ui</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../12-custom-ui/01-decorations-and-themes.html" class="nav-link">Decorations and Theme Extensions</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../12-custom-ui/02-custom-paint.html" class="nav-link">CustomPaint and Canvas</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../12-custom-ui/03-composing-custom-widgets.html" class="nav-link">Composing Custom Widgets</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../12-custom-ui/04-custom-email-inbox-list.html" class="nav-link">Custom Email Inbox List</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">13 packages</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../13-packages/01-networking.html" class="nav-link">Networking</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../13-packages/02-persistence.html" class="nav-link">Local Persistence</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../13-packages/03-audio-playback.html" class="nav-link">Audio and Video Packages</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../13-packages/04-desktop-mobile-integration.html" class="nav-link">Desktop and Mobile Integration</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">14 spotify style app</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/01-project-setup.html" class="nav-link">Project Setup</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/02-models-and-services.html" class="nav-link">Models and Services</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/03-shell-layout.html" class="nav-link">Responsive App Shell</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/04-player-ui-and-polish.html" class="nav-link">Player UI and Queue</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/05-home-screen.html" class="nav-link">Home Screen</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/06-search-page.html" class="nav-link">Search Page</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/07-album-detail-and-lists.html" class="nav-link">Album Detail and Album Lists</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1 is-active">
+                          
+                            <a href="../14-spotify-style-app/08-library-and-playlists.html" class="nav-link">Library and Playlists</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">scripts</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">site</span>
+                            
+                        </li>
+                        
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <article class="doc">
+          <header class="doc-header">
+            <h1>Library and Playlists</h1>
+          </header>
+          <div class="doc-body"><h1 id="library-and-playlists">Library and Playlists</h1>
+<p>The <strong>library</strong> tab lists user playlists, liked songs, and saved albums. <strong>Playlist detail</strong> mirrors album pages but shows playlist description and the same track <strong><code>SliverList</code></strong>. This chapter ties <strong><code>ListView</code></strong>, <strong><code>TabBar</code></strong>, <strong><code>FilterChip</code></strong>, and playlist <strong><code>playTracks</code></strong> together.</p>
+<h2 id="library-screen-with-filter-chips">Library screen with filter chips</h2>
+<pre><code class="language-dart">import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+
+import '../../data/repositories/catalog_repository.dart';
+
+enum LibraryFilter { playlists, albums, artists }
+
+class LibraryScreen extends StatefulWidget {
+  const LibraryScreen({super.key});
+
+  @override
+  State&lt;LibraryScreen&gt; createState() =&gt; _LibraryScreenState();
+}
+
+class _LibraryScreenState extends State&lt;LibraryScreen&gt; {
+  LibraryFilter _filter = LibraryFilter.playlists;
+
+  @override
+  Widget build(BuildContext context) {
+    final catalog = context.watch&lt;CatalogRepository&gt;();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text('Your Library', style: Theme.of(context).textTheme.headlineSmall),
+              ),
+              IconButton(icon: const Icon(Icons.search), onPressed: () =&gt; context.go('/search')),
+              IconButton(icon: const Icon(Icons.add), onPressed: _createPlaylist),
+            ],
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            children: [
+              FilterChip(
+                label: const Text('Playlists'),
+                selected: _filter == LibraryFilter.playlists,
+                onSelected: (_) =&gt; setState(() =&gt; _filter = LibraryFilter.playlists),
+              ),
+              const SizedBox(width: 8),
+              FilterChip(
+                label: const Text('Albums'),
+                selected: _filter == LibraryFilter.albums,
+                onSelected: (_) =&gt; setState(() =&gt; _filter = LibraryFilter.albums),
+              ),
+              const SizedBox(width: 8),
+              FilterChip(
+                label: const Text('Artists'),
+                selected: _filter == LibraryFilter.artists,
+                onSelected: (_) =&gt; setState(() =&gt; _filter = LibraryFilter.artists),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 8),
+        Expanded(child: _buildBody(context, catalog)),
+      ],
+    );
+  }
+
+  Widget _buildBody(BuildContext context, CatalogRepository catalog) {
+    switch (_filter) {
+      case LibraryFilter.playlists:
+        return _PlaylistList(playlists: catalog.playlists);
+      case LibraryFilter.albums:
+        return _AlbumLibraryList(albums: catalog.albums);
+      case LibraryFilter.artists:
+        return _ArtistPlaceholder();
+    }
+  }
+
+  void _createPlaylist() {
+    showDialog(
+      context: context,
+      builder: (context) =&gt; AlertDialog(
+        title: const Text('Create playlist'),
+        content: const TextField(decoration: InputDecoration(labelText: 'Name')),
+        actions: [
+          TextButton(onPressed: () =&gt; Navigator.pop(context), child: const Text('Cancel')),
+          FilledButton(onPressed: () =&gt; Navigator.pop(context), child: const Text('Create')),
+        ],
+      ),
+    );
+  }
+}
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th>Control</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Column</code> + <code>Expanded</code></td>
+<td>Chip row + scrollable list</td>
+</tr>
+<tr>
+<td><code>FilterChip</code></td>
+<td>Switch library segment</td>
+</tr>
+<tr>
+<td><code>AlertDialog</code> + <code>TextField</code></td>
+<td>Create playlist</td>
+</tr>
+<tr>
+<td><code>IconButton</code></td>
+<td>Jump to search</td>
+</tr>
+</tbody>
+</table>
+<h2 id="playlist-list">Playlist list</h2>
+<pre><code class="language-dart">class _PlaylistList extends StatelessWidget {
+  const _PlaylistList({required this.playlists});
+
+  final List&lt;Playlist&gt; playlists;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      padding: const EdgeInsets.only(bottom: 100),
+      itemCount: playlists.length + 1,
+      separatorBuilder: (_, __) =&gt; const SizedBox(height: 4),
+      itemBuilder: (context, index) {
+        if (index == 0) {
+          return ListTile(
+            leading: Container(
+              width: 56,
+              height: 56,
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: const Icon(Icons.favorite),
+            ),
+            title: const Text('Liked Songs'),
+            subtitle: const Text('Playlist · 128 tracks'),
+            onTap: () {},
+          );
+        }
+        final playlist = playlists[index - 1];
+        return ListTile(
+          leading: ClipRRect(
+            borderRadius: BorderRadius.circular(4),
+            child: Image.network(playlist.coverUrl, width: 56, height: 56, fit: BoxFit.cover),
+          ),
+          title: Text(playlist.title),
+          subtitle: Text('Playlist · ${playlist.trackIds.length} tracks'),
+          onTap: () =&gt; context.push('/playlist/${playlist.id}'),
+        );
+      },
+    );
+  }
+}
+</code></pre>
+<h2 id="playlist-detail-screen">Playlist detail screen</h2>
+<p>Same structure as album detail — <strong><code>CustomScrollView</code></strong>, header, play row, track list:</p>
+<pre><code class="language-dart">class PlaylistDetailScreen extends StatelessWidget {
+  const PlaylistDetailScreen({super.key, required this.playlistId});
+
+  final String playlistId;
+
+  @override
+  Widget build(BuildContext context) {
+    final catalog = context.read&lt;CatalogRepository&gt;();
+    final playlist = catalog.playlistById(playlistId);
+    if (playlist == null) {
+      return const Scaffold(body: Center(child: Text('Playlist not found')));
+    }
+    final tracks = catalog.tracksForPlaylist(playlistId);
+
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 240,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(playlist.title),
+              background: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image.network(playlist.coverUrl, fit: BoxFit.cover),
+                  DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Colors.transparent, Colors.black.withValues(alpha: 0.9)],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(playlist.description),
+                  const SizedBox(height: 8),
+                  Text('${tracks.length} songs', style: Theme.of(context).textTheme.bodySmall),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      FilledButton.icon(
+                        onPressed: () {
+                          context.read&lt;AudioRepository&gt;().playTracks(tracks);
+                        },
+                        icon: const Icon(Icons.play_arrow),
+                        label: const Text('Play'),
+                      ),
+                      const SizedBox(width: 12),
+                      OutlinedButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(Icons.shuffle),
+                        label: const Text('Shuffle'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SliverList.builder(
+            itemCount: tracks.length,
+            itemBuilder: (context, index) {
+              final track = tracks[index];
+              return Dismissible(
+                key: ValueKey(track.id),
+                direction: DismissDirection.endToStart,
+                background: Container(
+                  color: Theme.of(context).colorScheme.error,
+                  alignment: Alignment.centerRight,
+                  padding: const EdgeInsets.only(right: 16),
+                  child: const Icon(Icons.remove_circle_outline, color: Colors.white),
+                ),
+                confirmDismiss: (_) async {
+                  return await showDialog&lt;bool&gt;(
+                        context: context,
+                        builder: (context) =&gt; AlertDialog(
+                          title: const Text('Remove from playlist?'),
+                          actions: [
+                            TextButton(onPressed: () =&gt; Navigator.pop(context, false), child: const Text('Cancel')),
+                            FilledButton(onPressed: () =&gt; Navigator.pop(context, true), child: const Text('Remove')),
+                          ],
+                        ),
+                      ) ??
+                      false;
+                },
+                onDismissed: (_) {
+                  // Remove track id from playlist in repository
+                },
+                child: TrackListTile(
+                  track: track,
+                  index: index,
+                  onTap: () =&gt; context.read&lt;AudioRepository&gt;().playTracks(tracks, startIndex: index),
+                ),
+              );
+            },
+          ),
+          const SliverPadding(padding: EdgeInsets.only(bottom: 120)),
+        ],
+      ),
+    );
+  }
+}
+</code></pre>
+<p><strong><code>Dismissible</code></strong> + <strong><code>AlertDialog</code></strong> demonstrate swipe-to-remove with confirmation (Part 10).</p>
+<h2 id="liked-songs-simple-track-list">Liked songs — simple track list</h2>
+<pre><code class="language-dart">class LikedSongsScreen extends StatelessWidget {
+  const LikedSongsScreen({super.key, required this.tracks});
+
+  final List&lt;Track&gt; tracks;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Liked Songs')),
+      body: ListView.builder(
+        padding: const EdgeInsets.only(bottom: 96),
+        itemCount: tracks.length,
+        itemBuilder: (context, index) {
+          final track = tracks[index];
+          return TrackListTile(
+            track: track,
+            index: index,
+            onTap: () =&gt; context.read&lt;AudioRepository&gt;().playTracks(tracks, startIndex: index),
+          );
+        },
+      ),
+    );
+  }
+}
+</code></pre>
+<h2 id="end-to-end-feature-map">End-to-end feature map</h2>
+<pre class="mermaid">flowchart LR
+  Home --> AlbumDetail
+  Home --> PlaylistDetail
+  Search --> AlbumDetail
+  Search --> AudioRepo
+  Library --> PlaylistDetail
+  AlbumDetail --> AudioRepo
+  PlaylistDetail --> AudioRepo
+  AudioRepo --> MiniPlayer
+  MiniPlayer --> NowPlaying
+</pre>
+<table class="table">
+<thead>
+<tr>
+<th>Screen</th>
+<th>Primary layouts</th>
+<th>Primary controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home</td>
+<td><code>CustomScrollView</code>, horizontal <code>ListView</code>, <code>SliverGrid</code></td>
+<td><code>SliverAppBar</code>, <code>InkWell</code>, cards</td>
+</tr>
+<tr>
+<td>Search</td>
+<td><code>Column</code>, <code>GridView</code>, <code>ListView</code></td>
+<td><code>TextField</code>, <code>ListTile</code>, sheets</td>
+</tr>
+<tr>
+<td>Library</td>
+<td><code>Column</code>, <code>ListView</code>, chips</td>
+<td><code>FilterChip</code>, <code>ListTile</code>, dialog</td>
+</tr>
+<tr>
+<td>Album / playlist</td>
+<td><code>CustomScrollView</code>, <code>SliverAppBar</code></td>
+<td><code>FilledButton</code>, <code>SliverList</code>, <code>Dismissible</code></td>
+</tr>
+<tr>
+<td>Player</td>
+<td><code>Stack</code>, <code>Column</code></td>
+<td><code>Slider</code>, <code>IconButton</code>, reorderable queue</td>
+</tr>
+</tbody>
+</table>
+<h2 id="summary">Summary</h2>
+<p><strong>Library</strong> filters with <strong><code>FilterChip</code></strong> and lists playlists/albums via <strong><code>ListView</code></strong>. <strong>Playlist detail</strong> reuses the album <strong>sliver</strong> pattern and connects tracks to <strong><code>AudioRepository</code></strong>. Together with home, search, album, and shell chapters, Melody Hub is a <strong>complete</strong> multi-screen music UI you can extend with real URLs, auth, and persistence.</p>
+</div>
+          <footer class="doc-footer">
+            <p>Generated by <strong>MDWeb</strong></p>
+          </footer>
+        </article>
+
+        
+                <aside class="toc" aria-label="On this page">
+                  <p class="toc-title">On this page</p>
+                  <ul>
+                    
+                        <li class="toc-h1">
+                          <a href="#library-and-playlists">Library and Playlists</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#library-screen-with-filter-chips">Library screen with filter chips</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#playlist-list">Playlist list</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#playlist-detail-screen">Playlist detail screen</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#liked-songs-simple-track-list">Liked songs — simple track list</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#end-to-end-feature-map">End-to-end feature map</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#summary">Summary</a>
+                        </li>
+                        
+                  </ul>
+                </aside>
+                
+      </main>
+    </div>
+  </div>
+  <script src="../assets/vendor/mermaid.min.js"></script>
+  <script src="../assets/vendor/highlight.min.js"></script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

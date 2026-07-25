@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wrap and Flow Layout · Developing Flutter Applications</title>
+  <meta name="description" content="Generated documentation site">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/vendor/atom-one-dark.min.css">
+</head>
+<body>
+  <div class="site">
+    <header class="topbar">
+      <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+      <a href="../index.html" class="brand">Developing Flutter Applications</a>
+      <div class="search-wrap">
+        <input type="search" id="search" placeholder="Search docs…" autocomplete="off">
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar" id="sidebar">
+        <nav class="nav" aria-label="Documentation">
+          <ul class="nav-list">
+            
+                        <li class="nav-item depth-0">
+                          
+                            <a href="../index.html" class="nav-link">Developing Flutter Applications</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <a href="../README.html" class="nav-link">README</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">01 overview</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../01-overview/01-what-is-flutter.html" class="nav-link">What Is Flutter?</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../01-overview/02-dart-language-overview.html" class="nav-link">Dart Language Overview</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../01-overview/03-flutter-ecosystem.html" class="nav-link">The Flutter Ecosystem</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../01-overview/04-development-environment.html" class="nav-link">Setting Up Your Environment</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">02 dart basics</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../02-dart-basics/01-variables-and-types.html" class="nav-link">Variables and Types</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../02-dart-basics/02-control-flow.html" class="nav-link">Control Flow</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../02-dart-basics/03-functions.html" class="nav-link">Functions</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../02-dart-basics/04-collections.html" class="nav-link">Collections</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../02-dart-basics/05-classes-and-objects.html" class="nav-link">Classes and Objects</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">03 dart advanced</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../03-dart-advanced/01-generics.html" class="nav-link">Generics</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../03-dart-advanced/02-null-safety-deep-dive.html" class="nav-link">Null Safety Deep Dive</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../03-dart-advanced/03-mixins-and-extensions.html" class="nav-link">Mixins and Extensions</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../03-dart-advanced/04-exceptions-and-errors.html" class="nav-link">Exceptions and Errors</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../03-dart-advanced/05-libraries-and-exports.html" class="nav-link">Libraries and Exports</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">04 dart concurrency</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../04-dart-concurrency/01-event-loop.html" class="nav-link">The Dart Event Loop</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../04-dart-concurrency/02-async-await-futures.html" class="nav-link">async, await, and Futures</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../04-dart-concurrency/03-streams.html" class="nav-link">Streams</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../04-dart-concurrency/04-isolates.html" class="nav-link">Isolates</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">05 flutter app lifecycle</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../05-flutter-app-lifecycle/01-flutter-architecture.html" class="nav-link">Flutter Architecture</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../05-flutter-app-lifecycle/02-widget-tree-element-render.html" class="nav-link">Widget, Element, and Render Trees</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../05-flutter-app-lifecycle/03-app-lifecycle.html" class="nav-link">Application Lifecycle</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../05-flutter-app-lifecycle/04-navigation-overview.html" class="nav-link">Navigation Overview</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">06 flutter ui framework</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../06-flutter-ui-framework/01-rendering-pipeline.html" class="nav-link">Rendering Pipeline</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../06-flutter-ui-framework/02-material-cupertino.html" class="nav-link">Material and Cupertino</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../06-flutter-ui-framework/03-theming.html" class="nav-link">Theming</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../06-flutter-ui-framework/04-mediaquery-and-text-scale.html" class="nav-link">MediaQuery and Accessibility</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">07 layout basics</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../07-layout-basics/01-row-column-flex.html" class="nav-link">Row, Column, and Flex</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../07-layout-basics/02-container-padding-margin.html" class="nav-link">Container, Padding, and Margin</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../07-layout-basics/03-stack-positioned.html" class="nav-link">Stack and Positioned</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../07-layout-basics/04-align-centered-constraints.html" class="nav-link">Align, Center, and Constraints</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">08 layout advanced</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../08-layout-advanced/01-expanded-flexible.html" class="nav-link">Expanded and Flexible</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1 is-active">
+                          
+                            <a href="../08-layout-advanced/02-wrap-flow.html" class="nav-link">Wrap and Flow Layout</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../08-layout-advanced/03-layoutbuilder.html" class="nav-link">LayoutBuilder</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../08-layout-advanced/04-intrinsic-sliver.html" class="nav-link">Intrinsic Dimensions and Slivers</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">09 ui controls basics</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../09-ui-controls-basics/01-text-and-images.html" class="nav-link">Text and Images</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../09-ui-controls-basics/02-buttons.html" class="nav-link">Buttons</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../09-ui-controls-basics/03-text-fields.html" class="nav-link">Text Fields</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../09-ui-controls-basics/04-lists-and-grids.html" class="nav-link">Lists and Grids</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">10 ui controls advanced</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../10-ui-controls-advanced/01-scrollables-and-physics.html" class="nav-link">Scrollables and Physics</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../10-ui-controls-advanced/02-dialogs-bottom-sheets.html" class="nav-link">Dialogs and Bottom Sheets</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../10-ui-controls-advanced/03-gestures.html" class="nav-link">Gestures</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../10-ui-controls-advanced/04-navigation-rail-tabs.html" class="nav-link">Tabs and NavigationRail</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">11 state management</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../11-state-management/01-local-state-setstate.html" class="nav-link">Local State with setState</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../11-state-management/02-inherited-notifier.html" class="nav-link">InheritedWidget and Notifiers</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../11-state-management/03-provider-pattern.html" class="nav-link">Provider Pattern</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../11-state-management/04-riverpod-and-bloc.html" class="nav-link">Riverpod and BLoC Overview</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">12 custom ui</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../12-custom-ui/01-decorations-and-themes.html" class="nav-link">Decorations and Theme Extensions</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../12-custom-ui/02-custom-paint.html" class="nav-link">CustomPaint and Canvas</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../12-custom-ui/03-composing-custom-widgets.html" class="nav-link">Composing Custom Widgets</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../12-custom-ui/04-custom-email-inbox-list.html" class="nav-link">Custom Email Inbox List</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">13 packages</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../13-packages/01-networking.html" class="nav-link">Networking</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../13-packages/02-persistence.html" class="nav-link">Local Persistence</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../13-packages/03-audio-playback.html" class="nav-link">Audio and Video Packages</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../13-packages/04-desktop-mobile-integration.html" class="nav-link">Desktop and Mobile Integration</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">14 spotify style app</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/01-project-setup.html" class="nav-link">Project Setup</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/02-models-and-services.html" class="nav-link">Models and Services</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/03-shell-layout.html" class="nav-link">Responsive App Shell</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/04-player-ui-and-polish.html" class="nav-link">Player UI and Queue</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/05-home-screen.html" class="nav-link">Home Screen</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/06-search-page.html" class="nav-link">Search Page</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/07-album-detail-and-lists.html" class="nav-link">Album Detail and Album Lists</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <a href="../14-spotify-style-app/08-library-and-playlists.html" class="nav-link">Library and Playlists</a>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">scripts</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">site</span>
+                            
+                        </li>
+                        
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <article class="doc">
+          <header class="doc-header">
+            <h1>Wrap and Flow Layout</h1>
+          </header>
+          <div class="doc-body"><h1 id="wrap-and-flow-layout">Wrap and Flow Layout</h1>
+<p>When a <strong><code>Row</code></strong> cannot fit all children on one line, you get overflow. <strong><code>Wrap</code></strong> moves excess children to the <strong>next run</strong> (line or column), like CSS flex-wrap. For custom line breaking logic, <strong><code>Flow</code></strong> (with a delegate) offers lower-level control; most UIs use <strong><code>Wrap</code></strong>.</p>
+<h2 id="class-hierarchy">Class hierarchy</h2>
+<pre class="mermaid">flowchart TB
+  Widget --> MultiChildRenderObjectWidget
+  MultiChildRenderObjectWidget --> Wrap
+  MultiChildRenderObjectWidget --> Flow
+  Flow --> CustomPaint
+</pre>
+<table class="table">
+<thead>
+<tr>
+<th>Widget</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Wrap</code></td>
+<td>Tags, filters, chip groups, keyword clouds</td>
+</tr>
+<tr>
+<td><code>Flow</code></td>
+<td>Custom placement (rare; complex delegates)</td>
+</tr>
+<tr>
+<td><code>Row</code> + horizontal <code>SingleChildScrollView</code></td>
+<td>Single line, scroll instead of wrap</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wrap-parameters">Wrap parameters</h2>
+<pre><code class="language-dart">Wrap({
+  Axis direction = Axis.horizontal,
+  WrapAlignment alignment = WrapAlignment.start,
+  double spacing = 0.0,
+  WrapAlignment runAlignment = WrapAlignment.start,
+  double runSpacing = 0.0,
+  WrapCrossAlignment crossAxisAlignment = WrapCrossAlignment.center,
+  TextDirection? textDirection,
+  VerticalDirection verticalDirection = VerticalDirection.down,
+  Clip clipBehavior = Clip.none,
+  List&lt;Widget&gt; children = const &lt;Widget&gt;[],
+})
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th>Property</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>direction</code></td>
+<td><code>horizontal</code> → runs left-to-right, wrap to next row; <code>vertical</code> → columns</td>
+</tr>
+<tr>
+<td><code>spacing</code></td>
+<td>Gap between children <strong>on the same run</strong></td>
+</tr>
+<tr>
+<td><code>runSpacing</code></td>
+<td>Gap <strong>between runs</strong> (rows/columns)</td>
+</tr>
+<tr>
+<td><code>alignment</code></td>
+<td>How runs align along the main axis within <code>Wrap</code> width</td>
+</tr>
+<tr>
+<td><code>runAlignment</code></td>
+<td>How runs align along cross axis (vertical position of rows)</td>
+</tr>
+<tr>
+<td><code>crossAxisAlignment</code></td>
+<td>Align children within a run on cross axis</td>
+</tr>
+</tbody>
+</table>
+<h2 id="genre-filter-chips">Genre filter chips</h2>
+<pre><code class="language-dart">Wrap(
+  spacing: 8,
+  runSpacing: 8,
+  children: genres.map((g) {
+    final selected = g == selectedGenre;
+    return FilterChip(
+      label: Text(g),
+      selected: selected,
+      onSelected: (_) =&gt; onGenreSelected(g),
+    );
+  }).toList(),
+)
+</code></pre>
+<h2 id="comparison-wrap-vs-row-vs-listview">Comparison: Wrap vs Row vs ListView</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Behavior</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Row</code></td>
+<td>Single line, overflow if too wide</td>
+<td>Toolbars, fixed few items</td>
+</tr>
+<tr>
+<td><code>Wrap</code></td>
+<td>Multi-line, no scroll</td>
+<td>Tags, filters, small dynamic sets</td>
+</tr>
+<tr>
+<td><code>ListView</code> (horizontal)</td>
+<td>Scroll one line</td>
+<td>Many items, carousel</td>
+</tr>
+<tr>
+<td><code>GridView</code></td>
+<td>2D grid with scroll</td>
+<td>Album grids</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vertical-wrap">Vertical Wrap</h2>
+<pre><code class="language-dart">Wrap(
+  direction: Axis.vertical,
+  spacing: 4,
+  runSpacing: 12,
+  children: sideActions.map((icon) =&gt; IconButton(icon: icon, onPressed: () {})).toList(),
+)
+</code></pre>
+<p>Rare on phones; occasionally used in landscape tool strips.</p>
+<h2 id="flow-and-flowdelegate-overview">Flow and FlowDelegate (overview)</h2>
+<p><strong><code>Flow</code></strong> paints children with a <strong><code>FlowDelegate</code></strong> that computes position per child:</p>
+<pre><code class="language-dart">Flow(
+  delegate: _PlaylistBubbleDelegate(),
+  children: [
+    for (final friend in listeningFriends)
+      CircleAvatar(backgroundImage: NetworkImage(friend.avatarUrl)),
+  ],
+)
+</code></pre>
+<p>Delegates implement:</p>
+<ul>
+<li><code>Size getSize(BoxConstraints constraints)</code> — flow size</li>
+<li><code>void paintChildren(FlowPaintingContext context)</code> — position each child</li>
+<li><code>bool shouldRepaint(covariant FlowDelegate oldDelegate)</code></li>
+</ul>
+<p>Use <strong><code>Flow</code></strong> when <strong><code>Wrap</code></strong> alignment is insufficient (e.g. staggered avatars along a path). Cost: more code and repaint logic.</p>
+<h2 id="wrap-inside-scroll-views">Wrap inside scroll views</h2>
+<p>A <strong><code>Wrap</code></strong> sizes to its content height. Inside <strong><code>Column</code></strong>, no <code>Expanded</code> needed:</p>
+<pre><code class="language-dart">SingleChildScrollView(
+  padding: const EdgeInsets.all(16),
+  child: Wrap(
+    spacing: 8,
+    runSpacing: 8,
+    children: allMoods.map((m) =&gt; ActionChip(label: Text(m), onPressed: () {})).toList(),
+  ),
+)
+</code></pre>
+<p>If the wrap is inside unbounded height with thousands of chips, prefer paginated UI or <code>ListView</code> with custom delegate.</p>
+<h2 id="responsive-filter-bar">Responsive filter bar</h2>
+<p>Combine <strong><code>LayoutBuilder</code></strong> with <code>Wrap</code> vs <code>Row</code>:</p>
+<pre><code class="language-dart">LayoutBuilder(
+  builder: (context, constraints) {
+    final chips = buildFilterChips();
+    if (constraints.maxWidth &lt; 400) {
+      return Wrap(spacing: 8, runSpacing: 8, children: chips);
+    }
+    return Row(
+      children: [
+        ...chips.map((c) =&gt; Padding(padding: const EdgeInsets.only(right: 8), child: c)),
+        const Spacer(),
+        TextButton(onPressed: clearFilters, child: const Text('Clear')),
+      ],
+    );
+  },
+)
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p><strong><code>Wrap</code></strong> breaks flex lines when horizontal space runs out — ideal for chips and tags. Prefer <strong><code>Row</code> + scroll</strong> for one long carousel, <strong><code>GridView</code></strong> for large 2D catalogs, and <strong><code>Flow</code></strong> only when you need custom child positioning beyond wrap rules.</p>
+</div>
+          <footer class="doc-footer">
+            <p>Generated by <strong>MDWeb</strong></p>
+          </footer>
+        </article>
+
+        
+                <aside class="toc" aria-label="On this page">
+                  <p class="toc-title">On this page</p>
+                  <ul>
+                    
+                        <li class="toc-h1">
+                          <a href="#wrap-and-flow-layout">Wrap and Flow Layout</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#class-hierarchy">Class hierarchy</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#wrap-parameters">Wrap parameters</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#genre-filter-chips">Genre filter chips</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#comparison-wrap-vs-row-vs-listview">Comparison: Wrap vs Row vs ListView</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#vertical-wrap">Vertical Wrap</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#flow-and-flowdelegate-overview">Flow and FlowDelegate (overview)</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#wrap-inside-scroll-views">Wrap inside scroll views</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#responsive-filter-bar">Responsive filter bar</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#summary">Summary</a>
+                        </li>
+                        
+                  </ul>
+                </aside>
+                
+      </main>
+    </div>
+  </div>
+  <script src="../assets/vendor/mermaid.min.js"></script>
+  <script src="../assets/vendor/highlight.min.js"></script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>
