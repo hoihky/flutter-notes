@@ -149,6 +149,32 @@ LayoutBuilder(
 )
 ```
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+StudioBoard label editor overflowed when users added dozens of tags.
+
+## Deep dive
+
+Wrap moves children to next run instead of overflowing horizontally.
+
+## Extended example
+
+```dart
+Wrap(spacing: 8, runSpacing: 8, children: tags.map((t) => Chip(label: Text(t))).toList());
+```
+
+## Refined UI note
+
+Prefer Wrap for tag clouds; use horizontal ListView for intentionally scrollable single-line carousels.
+
+## Try it
+
+- Replace overflowing Row.
+- Compare Wrap vs Grid.
+
 ## Summary
 
 **`Wrap`** breaks flex lines when horizontal space runs out — ideal for chips and tags. Prefer **`Row` + scroll** for one long carousel, **`GridView`** for large 2D catalogs, and **`Flow`** only when you need custom child positioning beyond wrap rules.

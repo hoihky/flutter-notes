@@ -218,6 +218,40 @@ Scaffold(
 
 `Center` → `ConstrainedBox` → `Column` is a standard responsive form shell.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+LedgerAir empty states floated awkwardly because Column sat in unbounded height.
+
+## Deep dive
+
+Constraints flow down; sizes flow up. Center/Align position smaller children in larger boxes.
+
+## Extended example
+
+```dart
+Center(
+  child: ConstrainedBox(
+    constraints: const BoxConstraints(maxWidth: 360),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: const [Text('No entries yet'), SizedBox(height: 12), FilledButton(onPressed: null, child: Text('Import'))],
+    ),
+  ),
+);
+```
+
+## Refined UI note
+
+Constrain form width on desktop for readable line length.
+
+## Try it
+
+- Diagnose unbounded height error.
+- Use AspectRatio for thumbnails.
+
 ## Summary
 
 Parents pass constraints; **`ConstrainedBox`**, **`SizedBox`**, and **`AspectRatio`** shape what children may become; **`Align`** and **`Center`** position a smaller child in larger space. When layout breaks, read the constraint direction in the error — fixes are usually `Expanded`, bounded height, or `maxWidth` wrappers.

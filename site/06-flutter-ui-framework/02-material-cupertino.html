@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Material and Cupertino · Developing Flutter Applications</title>
-  <meta name="description" content="Generated documentation site">
+  <meta name="description" content="Flutter and Dart ebook with layout, UI, and capstone projects">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -494,15 +494,63 @@
                             
                         </li>
                         
-                        <li class="nav-item depth-0">
+                        <li class="nav-item depth-0 is-group">
                           
                             <span class="nav-group">scripts</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">  pycache  </span>
                             
                         </li>
                         
                         <li class="nav-item depth-0">
                           
                             <span class="nav-group">site</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">site assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">theme</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1 is-group">
+                          
+                            <span class="nav-group">assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">css</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">js</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">vendor</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">templates</span>
                             
                         </li>
                         
@@ -527,11 +575,49 @@
   home: ...,
 );
 </code></pre>
+<!-- core:v2 -->
+<h2 id="core-concepts">Core concepts</h2>
+<p><strong>Material</strong> and <strong>Cupertino</strong> are parallel design vocabularies. Material emphasizes elevation, seed-based color schemes, and M3 shape language. Cupertino emphasizes flat bars, muted greys, and iOS motion curves. Flutter lets you mix them, but mixed apps should do so <strong>intentionally</strong>—usually via adaptive widgets.</p>
+<h2 id="adaptive-settings-panel">Adaptive settings panel</h2>
+<pre><code class="language-dart">class AlertToggle extends StatelessWidget {
+  const AlertToggle({super.key, required this.value, required this.onChanged});
+  final bool value;
+  final ValueChanged&lt;bool&gt; onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return SwitchListTile.adaptive(
+      title: const Text('Session reminders'),
+      subtitle: const Text('PulseRoutine nudges between intervals'),
+      value: value,
+      onChanged: onChanged,
+    );
+  }
+}
+</code></pre>
+<h2 id="refined-layout-pairing">Refined layout pairing</h2>
+<p>Place adaptive controls inside <strong><code>ListTile</code></strong> rows with 16dp horizontal inset. On desktop, constrain settings column to 640dp centered—wide toggles look accidental, not adaptive.</p>
+<!-- enriched:v3 -->
+<h2 id="scenario">Scenario</h2>
+<p>HarborCart iOS users expected Cupertino switches in settings but got Material toggles.</p>
+<h2 id="deep-dive">Deep dive</h2>
+<p>Pick a primary design language per platform or use adaptive constructors.</p>
+<h2 id="extended-example">Extended example</h2>
+<pre><code class="language-dart">Switch.adaptive(value: alertsOn, onChanged: (v) =&gt; setAlerts(v));
+</code></pre>
+<h2 id="refined-ui-note">Refined UI note</h2>
+<p>Mix Material scaffold with Cupertino pickers only deliberately—not accidentally.</p>
+<h2 id="try-it">Try it</h2>
+<ul>
+<li>Build settings with adaptive controls.</li>
+<li>Compare AppBar vs CupertinoNavigationBar.</li>
+</ul>
 <h2 id="summary">Summary</h2>
 <p>Choose a primary design language per platform or use adaptive constructors (<code>Switch.adaptive</code>).</p>
 </div>
           <footer class="doc-footer">
-            <p>Generated by <strong>MDWeb</strong></p>
+            <p>Generated by <strong>hoihky</strong> with <strong>MDWeb</strong> and with assistance from <strong>AI</strong></p>
+
           </footer>
         </article>
 
@@ -542,6 +628,38 @@
                     
                         <li class="toc-h1">
                           <a href="#material-and-cupertino">Material and Cupertino</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#core-concepts">Core concepts</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#adaptive-settings-panel">Adaptive settings panel</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#refined-layout-pairing">Refined layout pairing</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#scenario">Scenario</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#deep-dive">Deep dive</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#extended-example">Extended example</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#refined-ui-note">Refined UI note</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#try-it">Try it</a>
                         </li>
                         
                         <li class="toc-h2">

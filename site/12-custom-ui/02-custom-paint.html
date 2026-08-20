@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CustomPaint and Canvas · Developing Flutter Applications</title>
-  <meta name="description" content="Generated documentation site">
+  <meta name="description" content="Flutter and Dart ebook with layout, UI, and capstone projects">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -494,15 +494,63 @@
                             
                         </li>
                         
-                        <li class="nav-item depth-0">
+                        <li class="nav-item depth-0 is-group">
                           
                             <span class="nav-group">scripts</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">  pycache  </span>
                             
                         </li>
                         
                         <li class="nav-item depth-0">
                           
                             <span class="nav-group">site</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">site assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">theme</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1 is-group">
+                          
+                            <span class="nav-group">assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">css</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">js</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">vendor</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">templates</span>
                             
                         </li>
                         
@@ -645,11 +693,43 @@ Stack(
 <li>Avoid <code>CustomPaint</code> on every row if hundreds are visible — use simple <code>Container</code> colors (Chapter 4 default).</li>
 <li>Repaint boundaries: <code>RepaintBoundary</code> around animated swipe tiles isolates layer invalidation.</li>
 </ul>
+<!-- enriched:v3 -->
+<h2 id="scenario">Scenario</h2>
+<p>PulseRoutine waveform scrubber needed custom stroke not available in stock widgets.</p>
+<h2 id="deep-dive">Deep dive</h2>
+<p>CustomPainter draws paths; implement shouldRepaint precisely.</p>
+<h2 id="extended-example">Extended example</h2>
+<pre><code class="language-dart">class SparklinePainter extends CustomPainter {
+  SparklinePainter(this.points);
+  final List&lt;double&gt; points;
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()..strokeWidth = 2..color = const Color(0xFF14B8A6);
+    final path = Path();
+    for (var i = 0; i &lt; points.length; i++) {
+      final x = size.width * i / (points.length - 1);
+      final y = size.height * (1 - points[i]);
+      if (i == 0) path.moveTo(x, y); else path.lineTo(x, y);
+    }
+    canvas.drawPath(path, paint);
+  }
+  @override
+  bool shouldRepaint(SparklinePainter old) =&gt; old.points != points;
+}
+</code></pre>
+<h2 id="refined-ui-note">Refined UI note</h2>
+<p>RepaintBoundary around animated painters prevents full-screen repaints.</p>
+<h2 id="try-it">Try it</h2>
+<ul>
+<li>Draw rounded rect badge.</li>
+<li>Toggle shouldRepaint demo.</li>
+</ul>
 <h2 id="summary">Summary</h2>
 <p><strong><code>CustomPaint</code></strong> draws swipe backgrounds, stripes, and borders. The email list capstone can use <strong><code>Stack</code> + <code>ColoredBox</code> + <code>Icon</code></strong> or this painter for richer action lanes. Keep painters stateless; drive colors from <strong><code>InboxThemeExtension</code></strong>.</p>
 </div>
           <footer class="doc-footer">
-            <p>Generated by <strong>MDWeb</strong></p>
+            <p>Generated by <strong>hoihky</strong> with <strong>MDWeb</strong> and with assistance from <strong>AI</strong></p>
+
           </footer>
         </article>
 
@@ -680,6 +760,26 @@ Stack(
                         
                         <li class="toc-h2">
                           <a href="#performance">Performance</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#scenario">Scenario</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#deep-dive">Deep dive</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#extended-example">Extended example</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#refined-ui-note">Refined UI note</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#try-it">Try it</a>
                         </li>
                         
                         <li class="toc-h2">

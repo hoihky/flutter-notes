@@ -228,6 +228,39 @@ See Part 8 for edge cases and flex math.
 
 **Fix for unbounded height:** Wrap the column in `Expanded` (inside `Column` parent), use `ListView` instead, or set `mainAxisSize: MainAxisSize.min`.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Melody Hub track rows overflowed on narrow phones because titles sat beside icons without flex.
+
+## Deep dive
+
+Rows distribute horizontal space; columns stack vertically. `Expanded` assigns leftover width to ellipsized text.
+
+## Extended example
+
+```dart
+Row(
+  children: [
+    const Icon(Icons.album_outlined),
+    const SizedBox(width: 12),
+    Expanded(child: Text(longTitle, maxLines: 1, overflow: TextOverflow.ellipsis)),
+    const Text('3:42'),
+  ],
+);
+```
+
+## Refined UI note
+
+Keep trailing metadata `Text` outside `Expanded` so duration stays visible.
+
+## Try it
+
+- Build price row with Spacer.
+- Fix overflow with Expanded.
+
 ## Summary
 
 `Flex` → `Row` / `Column` arrange children on one axis. Control distribution with `mainAxisAlignment`, cross-axis position with `crossAxisAlignment`, and sharing remaining space with `Expanded`, `Flexible`, and `Spacer`. Master the track-row pattern (`Icon` + `Expanded` + trailing metadata) — you will reuse it in lists, app bars, and player UIs throughout this book.

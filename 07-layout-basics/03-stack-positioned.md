@@ -227,6 +227,37 @@ SizedBox(
 
 Overflowing stack children are clipped when `clipBehavior` is `hardEdge` or `antiAlias`. Set `Clip.none` only when intentional overflow (e.g. shadows) and you accept paint outside bounds.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+StudioBoard cover pages need badges over thumbnails without affecting layout size.
+
+## Deep dive
+
+Stack paints back-to-front; Positioned anchors edges; Align places by fraction.
+
+## Extended example
+
+```dart
+Stack(
+  children: [
+    ClipRRect(borderRadius: BorderRadius.circular(8), child: Image.network(url, height: 120, width: 120, fit: BoxFit.cover)),
+    const Positioned(top: 6, right: 6, child: Icon(Icons.push_pin, size: 18)),
+  ],
+);
+```
+
+## Refined UI note
+
+Add gradient scrim at stack bottom for text legibility on photos.
+
+## Try it
+
+- Build play icon overlay.
+- Try IndexedStack for tab panels.
+
 ## Summary
 
 **`Stack`** layers widgets; **`Positioned`** pins children with edges; **`Align`** and **`FractionallySizedBox`** place by ratio. Use **`IndexedStack`** when switching visible panels without disposing off-screen state. Stacks are essential for media-rich UIs — covers, gradients, and play affordances on one surface.

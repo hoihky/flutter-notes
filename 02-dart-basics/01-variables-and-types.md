@@ -42,6 +42,46 @@ String display = nickname ?? 'Guest';
 
 The null-aware operators `?.`, `??`, and `??=` reduce boilerplate when handling optional values—common in JSON APIs and UI forms.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+HarborCart stores prices in cents as integers but displays formatted currency. A double accumulated rounding errors on discounted bundles.
+
+## Deep dive
+
+Prefer integers for money and counts; use `double` only for continuous measurements. Type inference with `var` is fine locally; public APIs should spell types for readability.
+
+## Extended example
+
+```dart
+class PriceTag {
+  const PriceTag({required this.cents});
+  final int cents;
+
+  String display({String symbol = r'$'}) {
+    final major = cents ~/ 100;
+    final minor = (cents % 100).toString().padLeft(2, '0');
+    return '$symbol$major.$minor';
+  }
+}
+
+void main() {
+  const tag = PriceTag(cents: 1299);
+  print(tag.display());
+}
+```
+
+## Engineering note
+
+Never persist currency as binary floats; format at the UI boundary.
+
+## Try it
+
+- Model tax as basis points (`int`) instead of `0.07` double.
+- Convert three `var` locals to explicit types where clarity improves.
+
 ## Summary
 
 Prefer `final` for locals that are assigned once. Use explicit types on public APIs; `var` is fine when the initializer makes the type obvious.

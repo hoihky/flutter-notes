@@ -330,6 +330,36 @@ flowchart LR
 | Album / playlist | `CustomScrollView`, `SliverAppBar` | `FilledButton`, `SliverList`, `Dismissible` |
 | Player | `Stack`, `Column` | `Slider`, `IconButton`, reorderable queue |
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Library filters playlists vs albums without rebuilding player shell.
+
+## Deep dive
+
+FilterChip row + switch body; playlist detail mirrors album with Dismissible remove.
+
+## Extended example
+
+```dart
+FilterChip(
+  label: const Text('Playlists'),
+  selected: filter == LibraryFilter.playlists,
+  onSelected: (_) => setFilter(LibraryFilter.playlists),
+);
+```
+
+## Refined UI note
+
+Liked Songs row uses accent container icon for visual anchor.
+
+## Try it
+
+- Create playlist dialog.
+- Map reorder through filter.
+
 ## Summary
 
 **Library** filters with **`FilterChip`** and lists playlists/albums via **`ListView`**. **Playlist detail** reuses the album **sliver** pattern and connects tracks to **`AudioRepository`**. Together with home, search, album, and shell chapters, Melody Hub is a **complete** multi-screen music UI you can extend with real URLs, auth, and persistence.

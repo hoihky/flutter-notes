@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Flutter Architecture · Developing Flutter Applications</title>
-  <meta name="description" content="Generated documentation site">
+  <meta name="description" content="Flutter and Dart ebook with layout, UI, and capstone projects">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -494,15 +494,63 @@
                             
                         </li>
                         
-                        <li class="nav-item depth-0">
+                        <li class="nav-item depth-0 is-group">
                           
                             <span class="nav-group">scripts</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">  pycache  </span>
                             
                         </li>
                         
                         <li class="nav-item depth-0">
                           
                             <span class="nav-group">site</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">site assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">theme</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1 is-group">
+                          
+                            <span class="nav-group">assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">css</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">js</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">vendor</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">templates</span>
                             
                         </li>
                         
@@ -523,11 +571,78 @@
 <li><strong>Framework</strong> — Widgets, rendering, gestures, painting.</li>
 </ol>
 <p>Your code interacts primarily with the <strong>framework</strong> layer. Understanding separation helps when debugging performance or platform integration.</p>
+<!-- core:v2 -->
+<h2 id="layer-responsibilities">Layer responsibilities</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Layer</th>
+<th>Owns</th>
+<th>Example bug symptom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Framework</td>
+<td>Widgets, gestures, focus</td>
+<td>Wrong layout math</td>
+</tr>
+<tr>
+<td>Engine</td>
+<td>Rasterization, text shaping</td>
+<td>Garbled glyphs</td>
+</tr>
+<tr>
+<td>Embedder</td>
+<td>Window, vsync, plugins</td>
+<td>Keyboard inset missing</td>
+</tr>
+</tbody>
+</table>
+<p>Melody Hub audio bugs often live at <strong>plugin/embedder</strong> boundaries, while list jank is usually <strong>framework</strong> rebuild scope.</p>
+<h2 id="minimal-layered-diagram-in-code-comments">Minimal layered diagram in code comments</h2>
+<p>Document boundaries in services:</p>
+<pre><code class="language-dart">/// Framework-facing API. Implementation may call platform channels (embedder).
+abstract class AudioBridge {
+  Future&lt;void&gt; play(Uri source);
+}
+</code></pre>
+<h2 id="fancy-ui-consequence">Fancy UI consequence</h2>
+<p>When embedder keyboard insets arrive late, wrap body with <code>AnimatedPadding</code> driven by <code>MediaQuery.viewInsets</code> so fields glide instead of jumping.</p>
+<!-- enriched:v3 -->
+<h2 id="scenario">Scenario</h2>
+<p>Melody Hub audio glitched when engineers confused engine vs framework responsibilities.</p>
+<h2 id="deep-dive">Deep dive</h2>
+<p>Embedder handles OS surfaces; engine renders; framework builds widget trees. Know which layer owns your bug.</p>
+<h2 id="extended-example">Extended example</h2>
+<pre><code class="language-dart">class LayerLegend extends StatelessWidget {
+  const LayerLegend({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Framework → widgets you write'),
+        Text('Engine → rendering + Dart runtime'),
+        Text('Embedder → OS window + input'),
+      ],
+    );
+  }
+}
+</code></pre>
+<h2 id="engineering-note">Engineering note</h2>
+<p>Platform channels bridge framework to embedder for sensors.</p>
+<h2 id="try-it">Try it</h2>
+<ul>
+<li>Trace one bug to a layer.</li>
+<li>List embedder responsibilities.</li>
+</ul>
 <h2 id="summary">Summary</h2>
 <p>Widgets are Dart configuration; the engine turns them into pixels. Platform channels cross from framework to embedder.</p>
 </div>
           <footer class="doc-footer">
-            <p>Generated by <strong>MDWeb</strong></p>
+            <p>Generated by <strong>hoihky</strong> with <strong>MDWeb</strong> and with assistance from <strong>AI</strong></p>
+
           </footer>
         </article>
 
@@ -538,6 +653,38 @@
                     
                         <li class="toc-h1">
                           <a href="#flutter-architecture">Flutter Architecture</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#layer-responsibilities">Layer responsibilities</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#minimal-layered-diagram-in-code-comments">Minimal layered diagram in code comments</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#fancy-ui-consequence">Fancy UI consequence</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#scenario">Scenario</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#deep-dive">Deep dive</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#extended-example">Extended example</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#engineering-note">Engineering note</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#try-it">Try it</a>
                         </li>
                         
                         <li class="toc-h2">

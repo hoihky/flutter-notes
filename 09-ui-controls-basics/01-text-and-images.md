@@ -227,6 +227,36 @@ CircleAvatar(
 
 The package **`cached_network_image`** adds disk/memory cache and fade — recommended for long lists of album art.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Melody Hub artwork shimmered without error placeholders when CDN failed.
+
+## Deep dive
+
+Text uses theme styles; images need fit, errorBuilder, and optional cacheWidth for memory.
+
+## Extended example
+
+```dart
+Image.network(
+  url,
+  fit: BoxFit.cover,
+  errorBuilder: (_, __, ___) => const ColoredBox(color: Color(0xFF334155), child: Icon(Icons.album)),
+);
+```
+
+## Refined UI note
+
+ClipRRect + consistent corner radius makes grids feel designed, not dumped.
+
+## Try it
+
+- Build RichText headline.
+- Add loading placeholder.
+
 ## Summary
 
 Use **`Text`** with theme styles and ellipsis for dense lists; **`RichText`** for mixed styles. Load images via **`Image.asset`** / **`Image.network`** with **`fit`**, **`errorBuilder`**, and optional **`cacheWidth`**. **`Icon`** covers symbolic actions; **`CircleAvatar`** covers user/artist thumbnails.

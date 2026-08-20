@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Dart Event Loop · Developing Flutter Applications</title>
-  <meta name="description" content="Generated documentation site">
+  <meta name="description" content="Flutter and Dart ebook with layout, UI, and capstone projects">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -494,15 +494,63 @@
                             
                         </li>
                         
-                        <li class="nav-item depth-0">
+                        <li class="nav-item depth-0 is-group">
                           
                             <span class="nav-group">scripts</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">  pycache  </span>
                             
                         </li>
                         
                         <li class="nav-item depth-0">
                           
                             <span class="nav-group">site</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">site assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">theme</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1 is-group">
+                          
+                            <span class="nav-group">assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">css</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">js</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">vendor</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">templates</span>
                             
                         </li>
                         
@@ -523,11 +571,68 @@
 <li><strong>Event queue</strong> — I/O, timers, and user input.</li>
 </ul>
 <p>Long synchronous work blocks UI frames. Keep <code>build</code> methods fast; offload heavy CPU work to isolates.</p>
+<!-- core:v2 -->
+<h2 id="core-concepts">Core concepts</h2>
+<p>Dart runs your UI code on a <strong>single isolate</strong> with one event loop. Tasks queue up as <strong>events</strong> (user input, I/O completion, timers) and <strong>microtasks</strong> (immediate follow-ups, often <code>Future</code> completions). The loop drains microtasks before the next event, which is why microtask storms can still block frames even without long synchronous work.</p>
+<p>Think of the loop as a busy concierge: it can only carry one task at a time. While the concierge parses a giant JSON string synchronously, nobody gets a new frame painted.</p>
+<h2 id="diagnosing-jank-in-harborcart">Diagnosing jank in HarborCart</h2>
+<p>HarborCart's cart summary used to decode server JSON inside <code>build</code>. Scrolling stuttered because <code>build</code> ran during scroll-driven rebuilds. Moving parsing to <code>initState</code> + <code>Future</code> removed the stutter without changing visuals.</p>
+<pre><code class="language-dart">class CartSummary extends StatefulWidget {
+  const CartSummary({super.key});
+  @override
+  State&lt;CartSummary&gt; createState() =&gt; _CartSummaryState();
+}
+
+class _CartSummaryState extends State&lt;CartSummary&gt; {
+  CartTotals? totals;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future&lt;void&gt; _load() async {
+    final raw = await rootBundle.loadString('assets/mock/cart.json');
+    final map = jsonDecode(raw) as Map&lt;String, dynamic&gt;;
+    if (!mounted) return;
+    setState(() =&gt; totals = CartTotals.fromJson(map));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (totals == null) return const LinearProgressIndicator();
+    return Text('Total: ${totals!.display}');
+  }
+}
+</code></pre>
+<h2 id="polished-ui-tie-in">Polished UI tie-in</h2>
+<p>Show a <strong>skeleton shimmer</strong> (simple <code>LinearProgressIndicator</code> or grey boxes) while awaiting I/O so the loop stays responsive and users perceive progress.</p>
+<!-- enriched:v3 -->
+<h2 id="scenario">Scenario</h2>
+<p>StudioBoard froze scrolling while computing diff histograms on the UI thread.</p>
+<h2 id="deep-dive">Deep dive</h2>
+<p>The event loop interleaves frames, gestures, and async completions. Blocking work delays <code>build</code>.</p>
+<h2 id="extended-example">Extended example</h2>
+<pre><code class="language-dart">Future&lt;void&gt; loadBoard() async {
+  final json = await fetchBoardJson();
+  final summary = summarize(json); // must stay fast
+  render(summary);
+}
+</code></pre>
+<h2 id="engineering-note">Engineering note</h2>
+<p>Profile before moving code to isolates.</p>
+<h2 id="try-it">Try it</h2>
+<ul>
+<li>Explain microtasks vs events.</li>
+<li>Reproduce jank with intentional sleep in build (then remove).</li>
+</ul>
 <h2 id="summary">Summary</h2>
 <p>Understanding the event loop explains why <code>await</code> yields control and why blocking the isolate janks animations.</p>
 </div>
           <footer class="doc-footer">
-            <p>Generated by <strong>MDWeb</strong></p>
+            <p>Generated by <strong>hoihky</strong> with <strong>MDWeb</strong> and with assistance from <strong>AI</strong></p>
+
           </footer>
         </article>
 
@@ -542,6 +647,38 @@
                         
                         <li class="toc-h2">
                           <a href="#microtasks-vs-events">Microtasks vs events</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#core-concepts">Core concepts</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#diagnosing-jank-in-harborcart">Diagnosing jank in HarborCart</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#polished-ui-tie-in">Polished UI tie-in</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#scenario">Scenario</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#deep-dive">Deep dive</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#extended-example">Extended example</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#engineering-note">Engineering note</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#try-it">Try it</a>
                         </li>
                         
                         <li class="toc-h2">

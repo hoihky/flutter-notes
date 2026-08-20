@@ -184,6 +184,37 @@ Expanded(
 
 Flex is **O(n)** and cheap. Do not wrap flex children in **`IntrinsicHeight`** unless necessary — intrinsic passes measure twice.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+HarborCart split pane needed 2:3 ratio between filters and results.
+
+## Deep dive
+
+Flex divides remaining space; `Flexible` loosens fit when children shrink.
+
+## Extended example
+
+```dart
+Row(
+  children: [
+    Flexible(flex: 2, child: FilterPanel()),
+    Flexible(flex: 3, child: ResultsPanel()),
+  ],
+);
+```
+
+## Refined UI note
+
+Use flex ratios instead of hard-coded pixel widths for resizable desktop layouts.
+
+## Try it
+
+- Convert rigid Row to flex.
+- Explain tight vs loose fit.
+
 ## Summary
 
 **`Expanded`** forces children to consume their flex share (**`FlexFit.tight`**). **`Flexible`** allows smaller children (**`loose`**). **`Spacer`** eats space for toolbars and sliders. Always place them as **direct** children of `Row`/`Column`, and bound height before putting scrollables in `Column`.

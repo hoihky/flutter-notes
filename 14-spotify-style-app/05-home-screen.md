@@ -275,6 +275,42 @@ class _HomeChip extends StatelessWidget {
 }
 ```
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Home feeds mixed carousels and grids—one CustomScrollView prevented scroll chaining bugs.
+
+## Deep dive
+
+SliverAppBar + horizontal ListView adapters + SliverGrid compose browse experience.
+
+## Extended example
+
+```dart
+SliverToBoxAdapter(
+  child: SizedBox(
+    height: 190,
+    child: ListView.separated(
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (c, i) => PlaylistCard(playlist: lists[i]),
+      separatorBuilder: (_, __) => const SizedBox(width: 12),
+      itemCount: lists.length,
+    ),
+  ),
+);
+```
+
+## Refined UI note
+
+Section headers with See all align to 16dp horizontal grid.
+
+## Try it
+
+- Add greeting by time of day.
+- Vary grid columns with SliverLayoutBuilder.
+
 ## Summary
 
 Home combines **`CustomScrollView`**, **`SliverAppBar`**, horizontal **`ListView`** carousels (`SizedBox` height + `Axis.horizontal`), and **`SliverGrid`** for album walls. **`SectionHeader`** uses **`Row`** + **`Expanded`** + **`TextButton`**. Every card navigates with **`context.push`** to album or playlist routes.

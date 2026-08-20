@@ -33,6 +33,35 @@ extension DurationFormat on Duration {
 
 Extensions keep UI formatting out of domain models.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+PulseRoutine shares heartbeat telemetry between widgets and background timers.
+
+## Deep dive
+
+Mixins compose behavior across unrelated classes; extensions add convenience without subclassing SDK types.
+
+## Extended example
+
+```dart
+mixin Heartbeat { DateTime get pulseAt => DateTime.now(); }
+extension ColorFade on Color {
+  Color soften([double amount = 0.2]) => withValues(alpha: amount);
+}
+```
+
+## Engineering note
+
+Keep extensions file scoped; do not hide business rules in extension methods.
+
+## Try it
+
+- Format user initials via extension.
+- Apply mixin to two State classes.
+
 ## Summary
 
 Reach for extensions for small conveniences; use mixins when multiple classes need shared implementation.

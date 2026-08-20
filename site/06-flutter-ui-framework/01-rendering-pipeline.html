@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rendering Pipeline · Developing Flutter Applications</title>
-  <meta name="description" content="Generated documentation site">
+  <meta name="description" content="Flutter and Dart ebook with layout, UI, and capstone projects">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -494,15 +494,63 @@
                             
                         </li>
                         
-                        <li class="nav-item depth-0">
+                        <li class="nav-item depth-0 is-group">
                           
                             <span class="nav-group">scripts</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">  pycache  </span>
                             
                         </li>
                         
                         <li class="nav-item depth-0">
                           
                             <span class="nav-group">site</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">site assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">theme</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1 is-group">
+                          
+                            <span class="nav-group">assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">css</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">js</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">vendor</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">templates</span>
                             
                         </li>
                         
@@ -518,11 +566,90 @@
           <div class="doc-body"><h1 id="rendering-pipeline">Rendering Pipeline</h1>
 <p>Each frame follows <strong>build → layout → paint → compositing</strong>. The framework schedules frames when animation ticks, gestures resolve, or <code>setState</code> marks elements dirty.</p>
 <p>Enable performance overlay with <code>MaterialApp(showPerformanceOverlay: true)</code> in debug builds to spot missed frames.</p>
+<!-- core:v2 -->
+<h2 id="core-concepts">Core concepts</h2>
+<p>Rendering is not one step—it is a pipeline:</p>
+<ol>
+<li><strong>Build</strong> — widgets produce an updated description.</li>
+<li><strong>Layout</strong> — render objects negotiate constraints and choose sizes.</li>
+<li><strong>Paint</strong> — layers record drawing commands.</li>
+<li><strong>Compositing</strong> — engine assembles layers into the final surface.</li>
+</ol>
+<p>When Melody Hub's album grid stutters, ask which stage ran too often. Unnecessary <strong>build</strong> work is the most common culprit; unnecessary <strong>repaint</strong> is second (fix with <code>RepaintBoundary</code>).</p>
+<h2 id="fancy-grid-without-extra-rebuilds">Fancy grid without extra rebuilds</h2>
+<p>Split static decoration from changing text so only the label rebuilds:</p>
+<pre><code class="language-dart">class AlbumTile extends StatelessWidget {
+  const AlbumTile({super.key, required this.title, required this.imageUrl});
+  final String title;
+  final String imageUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return RepaintBoundary(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.18),
+                      blurRadius: 12,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Image.network(imageUrl, fit: BoxFit.cover, width: double.infinity),
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
+        ],
+      ),
+    );
+  }
+}
+</code></pre>
+<h2 id="debugging-checklist">Debugging checklist</h2>
+<ul>
+<li>Toggle <strong>performance overlay</strong> in debug.</li>
+<li>Count <code>setState</code> calls during scroll.</li>
+<li>Wrap static art in <code>RepaintBoundary</code> and profile again.</li>
+</ul>
+<!-- enriched:v3 -->
+<h2 id="scenario">Scenario</h2>
+<p>Melody Hub dropped frames when album grids rebuilt entire slivers each tick.</p>
+<h2 id="deep-dive">Deep dive</h2>
+<p>Frames pipeline build → layout → paint → compositing. Minimize rebuild scope.</p>
+<h2 id="extended-example">Extended example</h2>
+<pre><code class="language-dart">class FrameBudgetBanner extends StatelessWidget {
+  const FrameBudgetBanner({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      showPerformanceOverlay: true,
+      home: const Scaffold(body: Center(child: Text('Profile me'))),
+    );
+  }
+}
+</code></pre>
+<h2 id="refined-ui-note">Refined UI note</h2>
+<p>Use <code>RepaintBoundary</code> on expensive static artwork layers.</p>
+<h2 id="try-it">Try it</h2>
+<ul>
+<li>Enable performance overlay.</li>
+<li>List reasons layout pass reruns.</li>
+</ul>
 <h2 id="summary">Summary</h2>
 <p>Jank usually means too much work per frame—simplify <code>build</code>, cache images, or defer layout.</p>
 </div>
           <footer class="doc-footer">
-            <p>Generated by <strong>MDWeb</strong></p>
+            <p>Generated by <strong>hoihky</strong> with <strong>MDWeb</strong> and with assistance from <strong>AI</strong></p>
+
           </footer>
         </article>
 
@@ -533,6 +660,38 @@
                     
                         <li class="toc-h1">
                           <a href="#rendering-pipeline">Rendering Pipeline</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#core-concepts">Core concepts</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#fancy-grid-without-extra-rebuilds">Fancy grid without extra rebuilds</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#debugging-checklist">Debugging checklist</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#scenario">Scenario</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#deep-dive">Deep dive</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#extended-example">Extended example</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#refined-ui-note">Refined UI note</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#try-it">Try it</a>
                         </li>
                         
                         <li class="toc-h2">

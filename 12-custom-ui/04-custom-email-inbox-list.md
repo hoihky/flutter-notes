@@ -510,6 +510,36 @@ List<EmailMessage> get _seedEmails => [
 - **`AnimatedSwitcher`** when theme changes for a soft flash on list background.
 - **Accessibility**: `Semantics` on swipe lanes; announce "Archive" / "Delete" with `AnnounceSemanticsEvent`.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+LedgerAir operators demanded swipe, reorder, filter, and theme swap without external UI kits.
+
+## Deep dive
+
+Combine manual swipe offset, ReorderableListView handles, FilterChip query, and ThemeExtension palettes.
+
+## Extended example
+
+```dart
+// Gesture + reorder coexist when drag handle is separate from swipe detector
+ReorderableDragStartListener(
+  index: index,
+  child: const Icon(Icons.drag_handle),
+);
+```
+
+## Refined UI note
+
+Unread border + subtle surface step makes dense inboxes scannable without loud colors.
+
+## Try it
+
+- Add undo SnackBar on archive.
+- Stress test reorder with filters active.
+
 ## Summary
 
 The custom inbox combines **`SwipeableEmailRow`** (manual horizontal drag), **`ReorderableListView`** with **`ReorderableDragStartListener`**, **`FilterChip`** / **`TextField`** filtering, **`PopupMenuButton`** sorting, and **`ThemeExtension`** color presets — all SDK widgets. Copy Chapters 1–3 for theme tokens, optional **`CustomPaint`** backgrounds, and per-kind tile composition.

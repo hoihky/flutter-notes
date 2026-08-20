@@ -21,20 +21,18 @@ Markdown ebook and generated documentation site for learning Flutter and Dart, f
 | 13 | `13-packages/` | HTTP, persistence, audio, desktop |
 | 14 | `14-spotify-style-app/` | End-to-end music app project |
 
-Regenerate chapter files after editing `scripts/generate_ebook.py`:
-
-```bash
-python3 scripts/generate_ebook.py
-```
-
 ## Build the site (MDWeb)
 
+Custom theme and footer live in this repo:
+
 ```bash
-dotnet run --project ../MDWeb/src/MDWeb.Cli -- \
+/Users/rainechen/Desktop/Kwan/Source/Projects/MDWeb/src/MDWeb.Cli/bin/Debug/net10.0/mdweb \
   --source . \
   --output ./site \
-  --theme ../MDWeb/themes/default \
-  --title "Developing Flutter Applications"
+  --theme ./theme \
+  --title "Developing Flutter Applications" \
+  --description "Flutter and Dart ebook with layout, UI, and capstone projects" \
+  --footer-file ./site-footer.html
 ```
 
 Open `site/index.html` in a browser, or run `npx serve site` for local preview.

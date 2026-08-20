@@ -248,6 +248,37 @@ padding: EdgeInsets.only(bottom: kBottomNavigationBarHeight),
 
 Or let `SafeArea` on shell handle bottom — ensure scroll views use `padding` so last list item is not hidden behind the mini player (`padding: EdgeInsets.only(bottom: 72)` on sliver lists).
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Mini player had to survive tab switches without resetting queue.
+
+## Deep dive
+
+Shell Column stacks content + player; StatefulShellRoute keeps tab stacks alive.
+
+## Extended example
+
+```dart
+Column(
+  children: [
+    Expanded(child: navigationShell),
+    const MiniPlayerBar(),
+  ],
+);
+```
+
+## Refined UI note
+
+Reserve bottom padding in scroll views so last row clears mini player.
+
+## Try it
+
+- Breakpoint test rail vs bar.
+- Add desktop extended rail.
+
 ## Summary
 
 **`AppShell`** uses a **`Column`** with an **`Expanded` `Row`**: optional **`NavigationRail`**, tab content, then **`MiniPlayerBar`**. Mobile adds **`NavigationBar`**. This layout keeps playback visible while users switch home, search, and library.

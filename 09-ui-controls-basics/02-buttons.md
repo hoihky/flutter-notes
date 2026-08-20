@@ -212,6 +212,38 @@ Row(
 - Minimum touch target 48×48 logical pixels (`minimumSize` on styles).
 - Disabled actions: `onPressed: null`, not invisible widgets.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+HarborCart checkout had three equally loud buttons; conversion improved after hierarchy fix.
+
+## Deep dive
+
+One primary `FilledButton`, secondary `OutlinedButton`, tertiary `TextButton` per region.
+
+## Extended example
+
+```dart
+Row(
+  children: [
+    OutlinedButton(onPressed: cancel, child: const Text('Back')),
+    const SizedBox(width: 12),
+    FilledButton(onPressed: pay, child: const Text('Pay now')),
+  ],
+);
+```
+
+## Refined UI note
+
+Minimum 48dp touch targets; use tooltips on desktop icon buttons.
+
+## Try it
+
+- Disable button when form invalid.
+- Build segmented transport controls.
+
 ## Summary
 
 Pick **`FilledButton`** for primary actions, **`OutlinedButton`** / **`TextButton`** for secondary, **`IconButton`** for compact toolbars. Control state with **`onPressed`**, appearance with **`ButtonStyle`** and theme. Match platform expectations with **Cupertino** variants when building adaptive apps.

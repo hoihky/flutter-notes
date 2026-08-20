@@ -134,6 +134,48 @@ CustomPaint(
 - Avoid `CustomPaint` on every row if hundreds are visible — use simple `Container` colors (Chapter 4 default).
 - Repaint boundaries: `RepaintBoundary` around animated swipe tiles isolates layer invalidation.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+PulseRoutine waveform scrubber needed custom stroke not available in stock widgets.
+
+## Deep dive
+
+CustomPainter draws paths; implement shouldRepaint precisely.
+
+## Extended example
+
+```dart
+class SparklinePainter extends CustomPainter {
+  SparklinePainter(this.points);
+  final List<double> points;
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()..strokeWidth = 2..color = const Color(0xFF14B8A6);
+    final path = Path();
+    for (var i = 0; i < points.length; i++) {
+      final x = size.width * i / (points.length - 1);
+      final y = size.height * (1 - points[i]);
+      if (i == 0) path.moveTo(x, y); else path.lineTo(x, y);
+    }
+    canvas.drawPath(path, paint);
+  }
+  @override
+  bool shouldRepaint(SparklinePainter old) => old.points != points;
+}
+```
+
+## Refined UI note
+
+RepaintBoundary around animated painters prevents full-screen repaints.
+
+## Try it
+
+- Draw rounded rect badge.
+- Toggle shouldRepaint demo.
+
 ## Summary
 
 **`CustomPaint`** draws swipe backgrounds, stripes, and borders. The email list capstone can use **`Stack` + `ColoredBox` + `Icon`** or this painter for richer action lanes. Keep painters stateless; drive colors from **`InboxThemeExtension`**.

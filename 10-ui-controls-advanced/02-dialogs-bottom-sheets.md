@@ -230,6 +230,41 @@ showAdaptiveDialog(
 );
 ```
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+HarborCart destructive clears used full-screen routes accidentally.
+
+## Deep dive
+
+Dialogs for short decisions; modal sheets for contextual actions; SnackBar for undo.
+
+## Extended example
+
+```dart
+final ok = await showDialog<bool>(
+  context: context,
+  builder: (c) => AlertDialog(
+    title: const Text('Clear cart?'),
+    actions: [
+      TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Cancel')),
+      FilledButton(onPressed: () => Navigator.pop(c, true), child: const Text('Clear')),
+    ],
+  ),
+);
+```
+
+## Refined UI note
+
+Sheets with drag handles feel native on mobile; keep dialog width ≤ 400dp on desktop.
+
+## Try it
+
+- Build queue bottom sheet.
+- Show SnackBar undo.
+
 ## Summary
 
 **`AlertDialog`** for short confirmations; **`showModalBottomSheet`** for track options and queues; **`SnackBar`** for undo feedback. Use **`isScrollControlled`** and **`DraggableScrollableSheet`** for tall content. Always **`Navigator.pop`** with results when awaiting user choice.

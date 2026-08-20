@@ -52,6 +52,68 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+PulseRoutine ships synchronized timers to coaches using Windows laptops and Android tablets. Rebuilding the UI twice was rejected; leadership asked whether Flutter's renderer can guarantee identical spacing on both targets.
+
+## Deep dive
+
+Flutter owns layout and painting through its engine rather than delegating to platform widgets. That decision enables pixel-perfect custom designs and imposes responsibility: you implement semantics, platform conventions, and accessibility deliberately.
+
+## Extended example
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() => runApp(const PulseRoutineApp());
+
+class PulseRoutineApp extends StatelessWidget {
+  const PulseRoutineApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.teal),
+      home: const SessionShell(),
+    );
+  }
+}
+
+class SessionShell extends StatelessWidget {
+  const SessionShell({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('PulseRoutine')),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 420),
+          child: const ListTile(
+            leading: Icon(Icons.timer_outlined),
+            title: Text('Warmup interval'),
+            trailing: Text('00:45'),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+## Refined UI note
+
+Even overview prototypes benefit from a `maxWidth` constraint so desktop window launches do not stretch readable text edge-to-edge.
+
+## Try it
+
+- List two features that still require platform channels in PulseRoutine.
+- Compare Flutter rendering to hosting native controls in a WebView.
+
 ## Summary
 
 Flutter is a cross-platform UI framework powered by Dart and a high-performance renderer. Understanding that apps are widget trees sets the stage for everything that follows in this book.

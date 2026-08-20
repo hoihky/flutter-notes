@@ -280,6 +280,32 @@ class _SearchResults extends StatelessWidget {
 
 On wide layouts the same `SearchScreen` fills the **`Expanded`** region beside **`NavigationRail`** — no code change; **`LayoutBuilder`** optional for two-column results (albums left, tracks right) when `maxWidth > 900`.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Search blended genre grid and live results—Column + Expanded bounded inner lists.
+
+## Deep dive
+
+Debounce query; show browse grid when empty; split album vs track results.
+
+## Extended example
+
+```dart
+Timer(const Duration(milliseconds: 280), () => runSearch(text));
+```
+
+## Refined UI note
+
+Filled rounded search field matches home chrome.
+
+## Try it
+
+- Clear button resets state.
+- Empty results illustration.
+
 ## Summary
 
 Search uses **`Column` + `Expanded`**, a filled **`TextField`** with debounce, **`GridView`** for categories, and **`ListView`** sections for album carousel + song **`ListTile`** results. Hook **`AudioRepository.playTrack`** on row tap and **`go_router`** for album navigation.

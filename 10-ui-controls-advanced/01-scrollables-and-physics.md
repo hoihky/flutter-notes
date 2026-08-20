@@ -216,6 +216,35 @@ NotificationListener<ScrollNotification>(
 )
 ```
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Melody Hub lyrics scroll fought with outer page scroll until physics were assigned.
+
+## Deep dive
+
+ScrollPhysics control overscroll; nest scrollables carefully or unify with slivers.
+
+## Extended example
+
+```dart
+CustomScrollView(
+  physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+  slivers: [...],
+);
+```
+
+## Refined UI note
+
+Show Scrollbar on desktop for discoverability.
+
+## Try it
+
+- Attach ScrollController listener.
+- Fix nested scroll conflict.
+
 ## Summary
 
 **`ScrollController`** drives position; **`ScrollPhysics`** defines feel and chaining. Prefer a **single** `CustomScrollView` with slivers over fighting nested `ListView`s. Use **`PageView`** for carousels and **`Scrollbar`** on desktop. Dispose controllers and avoid `shrinkWrap` on large lists.

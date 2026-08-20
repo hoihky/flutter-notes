@@ -218,6 +218,37 @@ NestedScrollView(
 )
 ```
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+HarborCart marketing page needs collapsing hero plus product list in one scroll.
+
+## Deep dive
+
+CustomScrollView unifies slivers; avoid nesting scroll views fighting for gestures.
+
+## Extended example
+
+```dart
+CustomScrollView(
+  slivers: [
+    const SliverAppBar(expandedHeight: 180, pinned: true, flexibleSpace: FlexibleSpaceBar(title: Text('Sale'))),
+    SliverList.builder(itemCount: 20, itemBuilder: (c, i) => ListTile(title: Text('Item $i'))),
+  ],
+);
+```
+
+## Refined UI note
+
+Pair floating SliverAppBar with list top padding so first item is not hidden.
+
+## Try it
+
+- Add SliverGrid section.
+- Explain intrinsic measure cost.
+
 ## Summary
 
 **`IntrinsicHeight` / `IntrinsicWidth`** align flex children on intrinsic max size — use for small rows, not long lists. **`CustomScrollView` + slivers** unify scrolling with collapsing app bars and lazy grids — the standard pattern for media browse screens. Prefer **`SliverList.builder`** over giant `Column` in scroll views for performance.

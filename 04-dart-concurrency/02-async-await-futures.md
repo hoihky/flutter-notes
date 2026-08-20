@@ -24,6 +24,35 @@ final results = await Future.wait([loadUser(), loadPlaylists()]);
 
 Unhandled async errors may reach `FlutterError.onError` or `runZonedGuarded`. Always handle errors in UI-facing loaders.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+HarborCart fetched tax and shipping rules sequentially though APIs are independent.
+
+## Deep dive
+
+`Future.wait` parallelizes independent work; handle partial failures explicitly.
+
+## Extended example
+
+```dart
+Future<(TaxRules, ShipRules)> loadRules() async {
+  final pair = await Future.wait([fetchTax(), fetchShipping()]);
+  return (pair[0] as TaxRules, pair[1] as ShipRules);
+}
+```
+
+## Engineering note
+
+Repositories return futures; widgets await via listeners or state notifiers.
+
+## Try it
+
+- Chain dependent futures.
+- Add `.timeout` with fallback UI.
+
 ## Summary
 
 Repositories return `Future` or `Stream` objects; widgets listen and rebuild when data arrives.

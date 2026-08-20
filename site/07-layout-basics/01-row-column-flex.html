@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Row, Column, and Flex · Developing Flutter Applications</title>
-  <meta name="description" content="Generated documentation site">
+  <meta name="description" content="Flutter and Dart ebook with layout, UI, and capstone projects">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -494,15 +494,63 @@
                             
                         </li>
                         
-                        <li class="nav-item depth-0">
+                        <li class="nav-item depth-0 is-group">
                           
                             <span class="nav-group">scripts</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">  pycache  </span>
                             
                         </li>
                         
                         <li class="nav-item depth-0">
                           
                             <span class="nav-group">site</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">site assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">theme</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1 is-group">
+                          
+                            <span class="nav-group">assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">css</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">js</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">vendor</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">templates</span>
                             
                         </li>
                         
@@ -804,11 +852,34 @@ Column(...) =&gt; Flex(direction: Axis.vertical, ...);
 </tbody>
 </table>
 <p><strong>Fix for unbounded height:</strong> Wrap the column in <code>Expanded</code> (inside <code>Column</code> parent), use <code>ListView</code> instead, or set <code>mainAxisSize: MainAxisSize.min</code>.</p>
+<!-- enriched:v3 -->
+<h2 id="scenario">Scenario</h2>
+<p>Melody Hub track rows overflowed on narrow phones because titles sat beside icons without flex.</p>
+<h2 id="deep-dive">Deep dive</h2>
+<p>Rows distribute horizontal space; columns stack vertically. <code>Expanded</code> assigns leftover width to ellipsized text.</p>
+<h2 id="extended-example">Extended example</h2>
+<pre><code class="language-dart">Row(
+  children: [
+    const Icon(Icons.album_outlined),
+    const SizedBox(width: 12),
+    Expanded(child: Text(longTitle, maxLines: 1, overflow: TextOverflow.ellipsis)),
+    const Text('3:42'),
+  ],
+);
+</code></pre>
+<h2 id="refined-ui-note">Refined UI note</h2>
+<p>Keep trailing metadata <code>Text</code> outside <code>Expanded</code> so duration stays visible.</p>
+<h2 id="try-it">Try it</h2>
+<ul>
+<li>Build price row with Spacer.</li>
+<li>Fix overflow with Expanded.</li>
+</ul>
 <h2 id="summary">Summary</h2>
 <p><code>Flex</code> → <code>Row</code> / <code>Column</code> arrange children on one axis. Control distribution with <code>mainAxisAlignment</code>, cross-axis position with <code>crossAxisAlignment</code>, and sharing remaining space with <code>Expanded</code>, <code>Flexible</code>, and <code>Spacer</code>. Master the track-row pattern (<code>Icon</code> + <code>Expanded</code> + trailing metadata) — you will reuse it in lists, app bars, and player UIs throughout this book.</p>
 </div>
           <footer class="doc-footer">
-            <p>Generated by <strong>MDWeb</strong></p>
+            <p>Generated by <strong>hoihky</strong> with <strong>MDWeb</strong> and with assistance from <strong>AI</strong></p>
+
           </footer>
         </article>
 
@@ -871,6 +942,26 @@ Column(...) =&gt; Flex(direction: Axis.vertical, ...);
                         
                         <li class="toc-h2">
                           <a href="#common-errors">Common errors</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#scenario">Scenario</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#deep-dive">Deep dive</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#extended-example">Extended example</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#refined-ui-note">Refined UI note</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#try-it">Try it</a>
                         </li>
                         
                         <li class="toc-h2">

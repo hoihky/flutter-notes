@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Local State with setState · Developing Flutter Applications</title>
-  <meta name="description" content="Generated documentation site">
+  <meta name="description" content="Flutter and Dart ebook with layout, UI, and capstone projects">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -494,15 +494,63 @@
                             
                         </li>
                         
-                        <li class="nav-item depth-0">
+                        <li class="nav-item depth-0 is-group">
                           
                             <span class="nav-group">scripts</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">  pycache  </span>
                             
                         </li>
                         
                         <li class="nav-item depth-0">
                           
                             <span class="nav-group">site</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">site assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">theme</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1 is-group">
+                          
+                            <span class="nav-group">assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">css</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">js</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">vendor</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">templates</span>
                             
                         </li>
                         
@@ -536,11 +584,72 @@ class _PlayPauseState extends State&lt;PlayPause&gt; {
   }
 }
 </code></pre>
+<!-- core:v2 -->
+<h2 id="when-setstate-is-enough">When setState is enough</h2>
+<p>Local ephemeral UI—expanded/collapsed panels, tab indexes inside one screen, form field focus—can stay inside <code>StatefulWidget</code>. Problems begin when distant cousins need the same data; that is the signal to lift state or inject a notifier.</p>
+<h2 id="collapsible-promo-banner-harborcart">Collapsible promo banner (HarborCart)</h2>
+<pre><code class="language-dart">class PromoBanner extends StatefulWidget {
+  const PromoBanner({super.key});
+  @override
+  State&lt;PromoBanner&gt; createState() =&gt; _PromoBannerState();
+}
+
+class _PromoBannerState extends State&lt;PromoBanner&gt; {
+  var expanded = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedCrossFade(
+      firstChild: MaterialBanner(
+        content: const Text('Free shipping this weekend'),
+        actions: [TextButton(onPressed: () =&gt; setState(() =&gt; expanded = false), child: const Text('Dismiss'))],
+      ),
+      secondChild: const SizedBox.shrink(),
+      crossFadeState: expanded ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+      duration: const Duration(milliseconds: 250),
+    );
+  }
+}
+</code></pre>
+<p><code>AnimatedCrossFade</code> sells the dismiss with motion—cheap polish tied to local state.</p>
+<!-- enriched:v3 -->
+<h2 id="scenario">Scenario</h2>
+<p>HarborCart quantity stepper lived entirely inside one widget—setState was enough.</p>
+<h2 id="deep-dive">Deep dive</h2>
+<p>Lift state when siblings need the same data; keep ephemeral UI local.</p>
+<h2 id="extended-example">Extended example</h2>
+<pre><code class="language-dart">class QtyStepper extends StatefulWidget {
+  const QtyStepper({super.key});
+  @override
+  State&lt;QtyStepper&gt; createState() =&gt; _QtyStepperState();
+}
+class _QtyStepperState extends State&lt;QtyStepper&gt; {
+  int qty = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        IconButton(onPressed: () =&gt; setState(() =&gt; qty = (qty - 1).clamp(1, 99)), icon: const Icon(Icons.remove)),
+        Text('$qty'),
+        IconButton(onPressed: () =&gt; setState(() =&gt; qty = (qty + 1).clamp(1, 99)), icon: const Icon(Icons.add)),
+      ],
+    );
+  }
+}
+</code></pre>
+<h2 id="engineering-note">Engineering note</h2>
+<p>setState marks element dirty; keep build pure.</p>
+<h2 id="try-it">Try it</h2>
+<ul>
+<li>Identify state to lift.</li>
+<li>Add disabled at min/max.</li>
+</ul>
 <h2 id="summary">Summary</h2>
 <p><code>setState</code> is perfect for ephemeral UI state isolated to one widget.</p>
 </div>
           <footer class="doc-footer">
-            <p>Generated by <strong>MDWeb</strong></p>
+            <p>Generated by <strong>hoihky</strong> with <strong>MDWeb</strong> and with assistance from <strong>AI</strong></p>
+
           </footer>
         </article>
 
@@ -551,6 +660,34 @@ class _PlayPauseState extends State&lt;PlayPause&gt; {
                     
                         <li class="toc-h1">
                           <a href="#local-state-with-setstate">Local State with setState</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#when-setstate-is-enough">When setState is enough</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#collapsible-promo-banner-harborcart">Collapsible promo banner (HarborCart)</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#scenario">Scenario</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#deep-dive">Deep dive</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#extended-example">Extended example</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#engineering-note">Engineering note</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#try-it">Try it</a>
                         </li>
                         
                         <li class="toc-h2">

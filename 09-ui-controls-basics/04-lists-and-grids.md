@@ -197,6 +197,36 @@ Each item needs a **unique `Key`**.
 - Set **`cacheExtent`** to prebuild off-screen items if scrolling feels empty.
 - Use **`itemExtent`** or **`prototypeItem`** when all rows have fixed height (faster layout).
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+LedgerAir timeline janked with 2k rows built eagerly.
+
+## Deep dive
+
+Use ListView/GridView builders for large collections; fixed extent improves layout speed.
+
+## Extended example
+
+```dart
+ListView.separated(
+  itemCount: items.length,
+  separatorBuilder: (_, __) => const Divider(height: 1),
+  itemBuilder: (context, i) => EntryTile(entry: items[i]),
+);
+```
+
+## Refined UI note
+
+Separators with indent align to avatar width for visual rhythm.
+
+## Try it
+
+- Convert to GridView.extent.
+- Add ReorderableListView sketch.
+
 ## Summary
 
 **`ListView.builder`** and **`GridView.builder`** are defaults for music catalogs. **`ListTile`** standardizes row layout. Bound height when nesting lists, use **keys** for reorder, and pick grid delegates (`count` vs `maxCrossAxisExtent`) for responsive album walls.

@@ -251,6 +251,39 @@ Hero(
 )
 ```
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Full-screen player needed scrim over blurred art for AA contrast on controls.
+
+## Deep dive
+
+Stack art + gradient + Column controls; modal queue sheet uses DraggableScrollableSheet.
+
+## Extended example
+
+```dart
+Stack(
+  fit: StackFit.expand,
+  children: [
+    Image.network(art, fit: BoxFit.cover),
+    DecoratedBox(decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.transparent, Colors.black87]))),
+    SafeArea(child: controlsColumn),
+  ],
+);
+```
+
+## Refined UI note
+
+Hero tags optional; consistent 12dp art radius matches grid tiles.
+
+## Try it
+
+- Add keyboard shortcut space to pause.
+- Semantics labels on transport.
+
 ## Summary
 
 **Now playing** layers **`Stack`** visuals with a **`Column`** of controls. **`Slider`** + streams handle progress; **`showModalBottomSheet`** + **`DraggableScrollableSheet`** present the **queue** with **`ReorderableListView`**. Wire the same `AudioRepository` used in the shell mini bar.

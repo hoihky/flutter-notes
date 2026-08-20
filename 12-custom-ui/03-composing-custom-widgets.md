@@ -274,6 +274,39 @@ List<EmailMessage> applyInboxQuery(
 
 UI: **`TextField`** for query, **`FilterChip`** per `EmailKind`, **`PopupMenuButton<EmailSort>`** for sort.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Melody Hub duplicated queue row UI in three screens until extracted.
+
+## Deep dive
+
+Small focused widgets with explicit parameters beat copy-paste build methods.
+
+## Extended example
+
+```dart
+class QueueRow extends StatelessWidget {
+  const QueueRow({super.key, required this.title, required this.subtitle, this.onTap});
+  final String title; final String subtitle; final VoidCallback? onTap;
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(title: Text(title), subtitle: Text(subtitle), onTap: onTap);
+  }
+}
+```
+
+## Refined UI note
+
+Name widgets after intent (`QueueRow`), not layout (`Row2`).
+
+## Try it
+
+- Extract third tile variant.
+- Document public API in doc comment.
+
 ## Summary
 
 Compose the inbox from a **factory** (`EmailRowContent`), **kind-specific tiles**, and **pure functions** for sort/filter. Chapter 4 adds **swipe**, **reorder**, and **theme** wiring in one screen.

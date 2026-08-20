@@ -237,6 +237,39 @@ StatefulShellRoute.indexedStack(
 
 Shell keeps each branch's stack alive — analogous to `IndexedStack` for nav tabs.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Melody Hub desktop shell needed persistent rail plus mobile bottom bar.
+
+## Deep dive
+
+NavigationRail for wide layouts; NavigationBar for phones; TabBar for in-screen sections.
+
+## Extended example
+
+```dart
+NavigationRail(
+  selectedIndex: index,
+  onDestinationSelected: setIndex,
+  destinations: const [
+    NavigationRailDestination(icon: Icon(Icons.home_outlined), label: Text('Home')),
+    NavigationRailDestination(icon: Icon(Icons.search_outlined), label: Text('Search')),
+  ],
+);
+```
+
+## Refined UI note
+
+Keep selected icon filled variant; align rail labels for scanability.
+
+## Try it
+
+- Build TabBar + TabBarView.
+- Adaptive shell at 900px.
+
 ## Summary
 
 **`NavigationBar`** for mobile primary nav; **`NavigationRail`** for desktop width; **`TabBar`/`TabBarView`** for in-screen sections like artist catalogs. Use **`LayoutBuilder`** or width breakpoints for adaptive shells. Dispose **`TabController`** and keep page lists shared so switching destinations does not reset player state unintentionally.

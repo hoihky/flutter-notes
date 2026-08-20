@@ -208,6 +208,40 @@ void onQueryChanged(String q) {
 }
 ```
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+StudioBoard search fired API calls every keystroke until debounced.
+
+## Deep dive
+
+TextField for free input; TextFormField inside Form for validation; always dispose controllers.
+
+## Extended example
+
+```dart
+TextField(
+  decoration: InputDecoration(
+    filled: true,
+    hintText: 'Search boards',
+    prefixIcon: Icon(Icons.search),
+    border: OutlineInputBorder(borderRadius: BorderRadius.circular(28), borderSide: BorderSide.none),
+  ),
+  onChanged: onQuery,
+);
+```
+
+## Refined UI note
+
+Rounded filled search fields match modern catalog apps—keep hint contrast AA compliant.
+
+## Try it
+
+- Add validator form.
+- Implement debounce.
+
 ## Summary
 
 Use **`TextField`** for simple input; **`TextFormField`** inside **`Form`** when validating. **`InputDecoration`** defines chrome; **`TextEditingController`** owns text lifecycle. Debounce search, dispose controllers, and theme decorations for consistent music-app search and auth flows.

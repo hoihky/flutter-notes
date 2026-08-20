@@ -265,6 +265,36 @@ LayoutBuilder(
 
 **`Row` + `SizedBox` + `Expanded`** implements a Spotify-like split view on desktop.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Album hero collapsed while scrolling track list—SliverAppBar tied both together.
+
+## Deep dive
+
+FlexibleSpaceBar + action row + SliverList.builder for tracks.
+
+## Extended example
+
+```dart
+SliverAppBar(
+  expandedHeight: 260,
+  pinned: true,
+  flexibleSpace: FlexibleSpaceBar(title: Text(album.title), background: artWithScrim),
+);
+```
+
+## Refined UI note
+
+Play + shuffle buttons sit 16dp below metadata for thumb reach.
+
+## Try it
+
+- Master-detail on desktop.
+- Track menu bottom sheet.
+
 ## Summary
 
 Album **lists** use **`GridView`** or **`ListView`** + **`ListTile`**. **Detail** pages combine **`SliverAppBar`**, action **`Row`**, and **`SliverList`** of tracks wired to **`playTracks`**. Use **`Stack`** in the flexible space bar for art + gradient legibility.

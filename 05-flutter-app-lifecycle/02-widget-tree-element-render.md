@@ -26,6 +26,34 @@ ListView.builder(
 );
 ```
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+HarborCart list reordering reused wrong state because keys were omitted.
+
+## Deep dive
+
+Widgets configure; elements mount; render objects layout/paint. Keys preserve state when child order changes.
+
+## Extended example
+
+```dart
+ListView.builder(
+  itemBuilder: (context, i) => CartLineTile(key: ValueKey(lines[i].sku), line: lines[i]),
+);
+```
+
+## Engineering note
+
+Stable keys for dynamic lists; avoid `UniqueKey` unless intentional reset.
+
+## Try it
+
+- Explain three trees in your words.
+- Fix reorder bug with ValueKey.
+
 ## Summary
 
 Cheap widget rebuilds are normal; expensive work belongs outside `build`.

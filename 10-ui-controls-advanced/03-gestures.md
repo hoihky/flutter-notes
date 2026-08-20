@@ -173,6 +173,38 @@ Semantics(
 )
 ```
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+PulseRoutine swipe-to-skip clashed with horizontal page navigation.
+
+## Deep dive
+
+Gesture arena picks winners; use Listener for raw pointers on custom painters.
+
+## Extended example
+
+```dart
+GestureDetector(
+  behavior: HitTestBehavior.opaque,
+  onHorizontalDragEnd: (d) {
+    if ((d.primaryVelocity ?? 0) > 300) skip();
+  },
+  child: sessionCard,
+);
+```
+
+## Refined UI note
+
+InkWell for Material splash; GestureDetector for custom drag on artwork.
+
+## Try it
+
+- Add Dismissible removal.
+- Compare InkWell vs GestureDetector.
+
 ## Summary
 
 Use **`InkWell`** for Material list rows with splash; **`GestureDetector`** for custom drags on artwork. **`Listener`** handles raw pointers on custom paint. Respect the gesture arena when combining scroll with horizontal swipes. **`Dismissible`** implements swipe-to-remove in queues.

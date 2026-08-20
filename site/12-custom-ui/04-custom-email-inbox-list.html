@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Custom Email Inbox List · Developing Flutter Applications</title>
-  <meta name="description" content="Generated documentation site">
+  <meta name="description" content="Flutter and Dart ebook with layout, UI, and capstone projects">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -494,15 +494,63 @@
                             
                         </li>
                         
-                        <li class="nav-item depth-0">
+                        <li class="nav-item depth-0 is-group">
                           
                             <span class="nav-group">scripts</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">  pycache  </span>
                             
                         </li>
                         
                         <li class="nav-item depth-0">
                           
                             <span class="nav-group">site</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">site assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">theme</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1 is-group">
+                          
+                            <span class="nav-group">assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">css</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">js</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">vendor</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">templates</span>
                             
                         </li>
                         
@@ -1037,11 +1085,31 @@ class _InboxScreenState extends State&lt;InboxScreen&gt; {
 <li><strong><code>AnimatedSwitcher</code></strong> when theme changes for a soft flash on list background.</li>
 <li><strong>Accessibility</strong>: <code>Semantics</code> on swipe lanes; announce &quot;Archive&quot; / &quot;Delete&quot; with <code>AnnounceSemanticsEvent</code>.</li>
 </ul>
+<!-- enriched:v3 -->
+<h2 id="scenario">Scenario</h2>
+<p>LedgerAir operators demanded swipe, reorder, filter, and theme swap without external UI kits.</p>
+<h2 id="deep-dive">Deep dive</h2>
+<p>Combine manual swipe offset, ReorderableListView handles, FilterChip query, and ThemeExtension palettes.</p>
+<h2 id="extended-example">Extended example</h2>
+<pre><code class="language-dart">// Gesture + reorder coexist when drag handle is separate from swipe detector
+ReorderableDragStartListener(
+  index: index,
+  child: const Icon(Icons.drag_handle),
+);
+</code></pre>
+<h2 id="refined-ui-note">Refined UI note</h2>
+<p>Unread border + subtle surface step makes dense inboxes scannable without loud colors.</p>
+<h2 id="try-it">Try it</h2>
+<ul>
+<li>Add undo SnackBar on archive.</li>
+<li>Stress test reorder with filters active.</li>
+</ul>
 <h2 id="summary">Summary</h2>
 <p>The custom inbox combines <strong><code>SwipeableEmailRow</code></strong> (manual horizontal drag), <strong><code>ReorderableListView</code></strong> with <strong><code>ReorderableDragStartListener</code></strong>, <strong><code>FilterChip</code></strong> / <strong><code>TextField</code></strong> filtering, <strong><code>PopupMenuButton</code></strong> sorting, and <strong><code>ThemeExtension</code></strong> color presets — all SDK widgets. Copy Chapters 1–3 for theme tokens, optional <strong><code>CustomPaint</code></strong> backgrounds, and per-kind tile composition.</p>
 </div>
           <footer class="doc-footer">
-            <p>Generated by <strong>MDWeb</strong></p>
+            <p>Generated by <strong>hoihky</strong> with <strong>MDWeb</strong> and with assistance from <strong>AI</strong></p>
+
           </footer>
         </article>
 
@@ -1092,6 +1160,26 @@ class _InboxScreenState extends State&lt;InboxScreen&gt; {
                         
                         <li class="toc-h2">
                           <a href="#optional-enhancements-still-no-packages">Optional enhancements (still no packages)</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#scenario">Scenario</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#deep-dive">Deep dive</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#extended-example">Extended example</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#refined-ui-note">Refined UI note</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#try-it">Try it</a>
                         </li>
                         
                         <li class="toc-h2">

@@ -264,6 +264,33 @@ Album and playlist routes use **`parentNavigatorKey: _rootNavigatorKey`** so the
 2. **Shell** — `NavigationRail` / `NavigationBar`, `Column` + `Expanded` + persistent **mini player**.
 3. **Screens** — each chapter wires specific layout and UI controls into a complete flow.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Melody Hub team parallelized features across home, search, and library folders.
+
+## Deep dive
+
+Feature-first folders scale; router owns cross-feature navigation.
+
+## Extended example
+
+```dart
+// router.dart excerpt
+GoRoute(path: '/album/:id', builder: (c, s) => AlbumDetailScreen(albumId: s.pathParameters['id']!));
+```
+
+## Refined UI note
+
+Dark theme seed early so screenshots look cohesive during week-one demos.
+
+## Try it
+
+- Add CI `flutter analyze`.
+- Trim unused platforms from create.
+
 ## Summary
 
 Melody Hub uses **feature folders**, **Provider** for audio state, **go_router** for tabs and full-screen details, and a **dark Material 3** theme. Detail routes sit on the root navigator so album and playlist pages feel modal and full-bleed.

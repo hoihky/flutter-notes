@@ -156,6 +156,34 @@ Orientation can change without window resize on foldables — combine with `Layo
 
 `builder` runs every layout pass. Keep work cheap; avoid heavy computation or I/O. For complex trees, extract stable subtrees with `const` constructors where possible.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Melody Hub sidebar appears only when content width exceeds 900 logical pixels.
+
+## Deep dive
+
+LayoutBuilder exposes parent constraints—more accurate than raw screen size inside split panes.
+
+## Extended example
+
+```dart
+LayoutBuilder(
+  builder: (context, c) => c.maxWidth > 900 ? DesktopShell() : MobileShell(),
+);
+```
+
+## Refined UI note
+
+Breakpoint on constraints, not device type, for foldables and resizable windows.
+
+## Try it
+
+- Build responsive grid column count.
+- Handle unbounded height in builder.
+
 ## Summary
 
 **`LayoutBuilder`** exposes parent **`BoxConstraints`** for adaptive layouts inside split views and resizable windows. Use it with **`OrientationBuilder`** when axis matters. Prefer constraint-based breakpoints over hard-coded device lists.

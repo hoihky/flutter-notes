@@ -243,6 +243,33 @@ class _InboxAppState extends State<InboxApp> {
 
 Expose a **`PopupMenuButton`** on the inbox app bar listing `InboxThemeExtension.presets`.
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+LedgerAir inbox needed swappable palettes for focus, night, and high-contrast modes.
+
+## Deep dive
+
+ThemeExtension stores custom tokens; DecoratedBox paints row chrome.
+
+## Extended example
+
+```dart
+final inbox = Theme.of(context).extension<InboxThemeExtension>()!;
+BoxDecoration(rowDecoration(Color bg) => BoxDecoration(color: bg, borderRadius: BorderRadius.circular(12)));
+```
+
+## Refined UI note
+
+Limit palette to one accent + neutrals so unread borders remain visible.
+
+## Try it
+
+- Add fourth theme preset.
+- Move swipe colors to extension.
+
 ## Summary
 
 Use **`BoxDecoration`** for row chrome and **`ThemeExtension`** for inbox-specific colors. Multiple presets (Classic, Midnight, Ocean) plug into **`ThemeData.extensions`** so the email list in Chapter 4 reads one object for swipe colors and category accents.

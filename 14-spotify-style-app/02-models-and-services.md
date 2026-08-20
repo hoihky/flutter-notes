@@ -309,6 +309,35 @@ class TrackListTile extends StatelessWidget {
 }
 ```
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+Player UI rebuilt every 200ms until audio position used streams not setState loops.
+
+## Deep dive
+
+Repositories isolate IO; ChangeNotifier exposes playback snapshot.
+
+## Extended example
+
+```dart
+class AudioRepository extends ChangeNotifier {
+  Duration position = Duration.zero;
+  void tick(Duration next) { position = next; notifyListeners(); }
+}
+```
+
+## Engineering note
+
+Parse JSON once; pass immutable models to widgets.
+
+## Try it
+
+- Fake catalog in tests.
+- Map album→tracks lookup.
+
 ## Summary
 
 **CatalogRepository** powers home rows, album lists, library playlists, and search. **AudioRepository** holds **current track** and **queue** for the player bar and reorderable queue sheet. Shared tiles keep **ListTile** styling consistent across screens.

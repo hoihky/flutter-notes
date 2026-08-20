@@ -206,6 +206,41 @@ ColoredBox(
 )
 ```
 
+
+<!-- enriched:v3 -->
+
+## Scenario
+
+HarborCart product cards looked cramped until margin and padding were separated.
+
+## Deep dive
+
+Margin separates siblings; padding inset content. Prefer focused widgets over mega-Container.
+
+## Extended example
+
+```dart
+Padding(
+  padding: const EdgeInsets.all(12),
+  child: DecoratedBox(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(16),
+      color: const Color(0xFFF1F5F9),
+    ),
+    child: const ListTile(title: Text('Ceramic mug')),
+  ),
+);
+```
+
+## Refined UI note
+
+Use 12–16dp outer margin rhythm between cards in grids.
+
+## Try it
+
+- Replace Container chain with Padding+DecoratedBox.
+- Sketch margin vs padding.
+
 ## Summary
 
 Use **`Padding`** for inset, **`SizedBox`** for fixed gaps and dimensions, and **`Container`** when you need decoration, alignment, margins, and constraints in one place. Remember: **margin** pushes siblings away; **padding** inset the child inside the box. Choosing focused widgets over a mega-`Container` keeps layout trees easier to debug.

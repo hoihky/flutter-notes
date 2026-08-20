@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Networking · Developing Flutter Applications</title>
-  <meta name="description" content="Generated documentation site">
+  <meta name="description" content="Flutter and Dart ebook with layout, UI, and capstone projects">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -494,15 +494,63 @@
                             
                         </li>
                         
-                        <li class="nav-item depth-0">
+                        <li class="nav-item depth-0 is-group">
                           
                             <span class="nav-group">scripts</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">  pycache  </span>
                             
                         </li>
                         
                         <li class="nav-item depth-0">
                           
                             <span class="nav-group">site</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">site assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">theme</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1 is-group">
+                          
+                            <span class="nav-group">assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">css</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">js</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">vendor</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">templates</span>
                             
                         </li>
                         
@@ -520,11 +568,59 @@
 <pre><code class="language-dart">final response = await dio.get('/v1/tracks', queryParameters: {'q': query});
 </code></pre>
 <p>Model JSON with <code>json_serializable</code> or manual <code>fromJson</code> factories. Never block <code>build</code> with network I/O.</p>
+<!-- core:v2 -->
+<h2 id="repository-boundary">Repository boundary</h2>
+<p>Widgets should call <code>catalog.fetchFeatured()</code> not <code>http.get</code>. Parsing, retry, and error translation belong in one module.</p>
+<pre><code class="language-dart">class CatalogRepository {
+  CatalogRepository(this.client);
+  final HttpClient client;
+
+  Future&lt;List&lt;Sku&gt;&gt; featured() async {
+    final uri = Uri.parse('https://example.test/v1/featured');
+    final response = await client.getUrl(uri).then((r) =&gt; r.close());
+    if (response.statusCode != 200) throw CatalogException(response.statusCode);
+    final body = await response.transform(utf8.decoder).join();
+    return (jsonDecode(body) as List).map((e) =&gt; Sku.fromJson(e as Map&lt;String, dynamic&gt;)).toList();
+  }
+}
+</code></pre>
+<h2 id="ui-pairing">UI pairing</h2>
+<p>Show <strong><code>RefreshIndicator</code></strong> on lists fed by repositories so users can retry without a dedicated error screen for transient failures.</p>
+<!-- enriched:v3 -->
+<h2 id="scenario">Scenario</h2>
+<p>HarborCart switched from ad-hoc http calls to a repository with timeouts.</p>
+<h2 id="deep-dive">Deep dive</h2>
+<p>Keep HTTP in services; parse JSON to models before widgets see data.</p>
+<h2 id="extended-example">Extended example</h2>
+<pre><code class="language-dart">class CatalogClient {
+  CatalogClient(this.baseUrl);
+  final String baseUrl;
+  Future&lt;List&lt;Sku&gt;&gt; fetchSkus() async {
+    final client = HttpClient();
+    try {
+      final req = await client.getUrl(Uri.parse('$baseUrl/skus'));
+      final res = await req.close();
+      final body = await res.transform(utf8.decoder).join();
+      return parseSkus(jsonDecode(body) as List);
+    } finally {
+      client.close();
+    }
+  }
+}
+</code></pre>
+<h2 id="engineering-note">Engineering note</h2>
+<p>Use dart:io HttpClient or package:http—not both patterns mixed silently.</p>
+<h2 id="try-it">Try it</h2>
+<ul>
+<li>Add error mapping.</li>
+<li>Mock client in tests.</li>
+</ul>
 <h2 id="summary">Summary</h2>
 <p>Keep HTTP clients in repositories; inject them for tests.</p>
 </div>
           <footer class="doc-footer">
-            <p>Generated by <strong>MDWeb</strong></p>
+            <p>Generated by <strong>hoihky</strong> with <strong>MDWeb</strong> and with assistance from <strong>AI</strong></p>
+
           </footer>
         </article>
 
@@ -535,6 +631,34 @@
                     
                         <li class="toc-h1">
                           <a href="#networking">Networking</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#repository-boundary">Repository boundary</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#ui-pairing">UI pairing</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#scenario">Scenario</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#deep-dive">Deep dive</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#extended-example">Extended example</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#engineering-note">Engineering note</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#try-it">Try it</a>
                         </li>
                         
                         <li class="toc-h2">

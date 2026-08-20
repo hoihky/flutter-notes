@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dart Language Overview · Developing Flutter Applications</title>
-  <meta name="description" content="Generated documentation site">
+  <meta name="description" content="Flutter and Dart ebook with layout, UI, and capstone projects">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -494,15 +494,63 @@
                             
                         </li>
                         
-                        <li class="nav-item depth-0">
+                        <li class="nav-item depth-0 is-group">
                           
                             <span class="nav-group">scripts</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">  pycache  </span>
                             
                         </li>
                         
                         <li class="nav-item depth-0">
                           
                             <span class="nav-group">site</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0">
+                          
+                            <span class="nav-group">site assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-0 is-group">
+                          
+                            <span class="nav-group">theme</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1 is-group">
+                          
+                            <span class="nav-group">assets</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">css</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">js</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-2">
+                          
+                            <span class="nav-group">vendor</span>
+                            
+                        </li>
+                        
+                        <li class="nav-item depth-1">
+                          
+                            <span class="nav-group">templates</span>
                             
                         </li>
                         
@@ -546,11 +594,40 @@ dart run bin/main.dart
 <li><strong><code>flutter test</code></strong> — Runs tests in the Flutter test harness.</li>
 </ul>
 <p>Adopting these tools early prevents style debates and catches bugs before runtime.</p>
+<!-- enriched:v3 -->
+<h2 id="scenario">Scenario</h2>
+<p>LedgerAir ingests CSV exports where optional memo columns are frequently blank. The first prototype used empty strings interchangeably with <code>null</code>, breaking filters for 'missing memo'.</p>
+<h2 id="deep-dive">Deep dive</h2>
+<p>Dart's sound nullability distinguishes unknown (<code>null</code>) from empty but present values. Combine <code>?</code>, <code>??</code>, and early returns to express business rules directly in models before widgets ever render.</p>
+<h2 id="extended-example">Extended example</h2>
+<pre><code class="language-dart">class LedgerRow {
+  const LedgerRow({required this postedOn, required this.amountCents, this.memo});
+  final DateTime postedOn;
+  final int amountCents;
+  final String? memo;
+
+  bool get needsReview =&gt; memo == null;
+
+  String displayMemo() =&gt; memo ?? '— add memo —';
+}
+
+List&lt;LedgerRow&gt; rowsNeedingReview(Iterable&lt;LedgerRow&gt; rows) {
+  return [for (final row in rows) if row.needsReview) row];
+}
+</code></pre>
+<h2 id="engineering-note">Engineering note</h2>
+<p>Model optional CSV columns as nullable fields, not magic strings.</p>
+<h2 id="try-it">Try it</h2>
+<ul>
+<li>Write a parser that treats blank cells as <code>null</code>.</li>
+<li>Explain why <code>late</code> is riskier than constructor initialization for UI fields.</li>
+</ul>
 <h2 id="summary">Summary</h2>
 <p>Dart is Flutter's programming language: strongly typed, null-safe, and async-friendly. Flutter projects organize Dart code under <code>lib/</code> and manage packages through <code>pubspec.yaml</code>.</p>
 </div>
           <footer class="doc-footer">
-            <p>Generated by <strong>MDWeb</strong></p>
+            <p>Generated by <strong>hoihky</strong> with <strong>MDWeb</strong> and with assistance from <strong>AI</strong></p>
+
           </footer>
         </article>
 
@@ -577,6 +654,26 @@ dart run bin/main.dart
                         
                         <li class="toc-h2">
                           <a href="#style-and-tooling">Style and tooling</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#scenario">Scenario</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#deep-dive">Deep dive</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#extended-example">Extended example</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#engineering-note">Engineering note</a>
+                        </li>
+                        
+                        <li class="toc-h2">
+                          <a href="#try-it">Try it</a>
                         </li>
                         
                         <li class="toc-h2">
